@@ -71,8 +71,7 @@ public class Knight extends Actor
         
     }
     
-    public void updateHealth(){
-        
+    public void updateHealth(){       
         ((Levels)getWorld()).updateHealthLevel(healthLevel);
     }
    
@@ -86,26 +85,21 @@ public class Knight extends Actor
     public void jump(){
         if(verticalSpeed == 0 && !isJumping){
             //play jumping sound?
-            if(!hitWallUp()){
-                verticalSpeed = JUMPVELOCITY;
-                isJumping = true;
-            }
+            verticalSpeed = JUMPVELOCITY;
+            isJumping = true;
         }
+        
         
     }
     
     public void applyMovement(){
         int x = getX() + horizontalSpeed;
         int y = getY();
-        if(hitWallUp()){
-            fall();
+        if(!hitWallUp(y-(int)verticalSpeed)){
+            setLocation(x, y-(int)verticalSpeed);
             return;
         }
-        else {
-            y = getY() - (int)verticalSpeed;
-            setLocation(x, y);
-        }
-
+        setLocation(x, y);
         
     }
     
@@ -137,7 +131,12 @@ public class Knight extends Actor
                 
                 }               
             }           
-        }        
+        }
+        
+        if(hitWallUp(y)){
+            verticalSpeed = GRAVITY;
+            y+=20;
+        }
         setLocation(x, y);
        
         if (verticalSpeed > GRAVITY && !touchingGround) {
@@ -208,21 +207,15 @@ public class Knight extends Actor
         return false;        
     }
     
-    public boolean hitWallUp(){
+    public boolean hitWallUp(int y){
         List<Platform> touching = this.getObjectsInRange(30, Platform.class);
         for(Platform p : touching){
-            if(p.getY() < this.getY() && Math.abs(p.getX()-this.getX()) <= 20){
+            if((y-p.getY()<30 && y-p.getY() > 0) && Math.abs(p.getX()-this.getX()) <= 20){
                 return true;
             }
         }
         return false;         
     }
     
-    public void fall(){
-        //this is only after hitting a block above
-        //get block above
-        //increase Y until not touching anymore
-        setLocation(getX(), getY()+20);
-    }
     
 }
