@@ -51,7 +51,7 @@ public class Lvl1Screen2 extends Levels
         
         x=200;
         y=307;
-        Platform p1 = new Platform();
+        Platform p1 = new Platform(false);
         p1.setImage(b10);
         addObject(p1, x, y);
         
@@ -63,12 +63,12 @@ public class Lvl1Screen2 extends Levels
             x+=30;
         }
         
-        Platform p2 = new Platform();
+        Platform p2 = new Platform(false);
         p2.setImage(b9);
         addObject(p2, x, y);
         y-=30;
         
-        Platform p3 = new Platform();
+        Platform p3 = new Platform(true);
         p3.setImage(b8);
         addObject(p3, x, y);
         x-=30;
@@ -79,43 +79,55 @@ public class Lvl1Screen2 extends Levels
             x-=30;
         }
         
-        Platform p4 = new Platform();
+        Platform p4 = new Platform(true);
         p4.setImage(b7);
         addObject(p4, x, y);
         x+=30;
         y-=30;
         
-        Platform p5 = new Platform();
+        Platform p5 = new Platform(false);
         p5.setImage(b10);
         addObject(p5, x, y);
         
-        Platform p6 = new Platform();
+        Platform p6 = new Platform(false);
         p6.setImage(b9);
         addObject(p6, x+30, y);
         
-        Platform p7 = new Platform();
+        Platform p7 = new Platform(false);
         p7.setImage(b5);
         addObject(p7, x+30, y-30);
         
-        Platform p8 = new Platform();
-        p8.setImage(b8);
+        Platform p8 = new Platform(false);
+        p8.setImage(b5);
         addObject(p8, x+30, y-60);
        
-        Platform p9 = new Platform();
-        p9.setImage(b7);
+        Platform p9 = new Platform(false);
+        p9.setImage(b6);
         addObject(p9, x, y-60);
 
-        Platform p10 = new Platform();
+        Platform p10 = new Platform(false);
         p10.setImage(b6);
         addObject(p10, x, y-30);
         
-        x=100;
-        y=215;
-        Platform p11= new Platform();
+        Platform t1 = new Platform(true);
+        t1.setImage(b7);
+        addObject(t1, x, y-90);
+        
+        Platform t2 = new Platform(true);
+        t2.setImage(b8);
+        addObject(t2, x+30, y-90);
+        
+        Platform t3 = new Platform(true);
+        t3.setImage(b11);
+        addObject(t3, x-30, y-90);
+        
+        x=140;
+        y=200;
+        Platform p11= new Platform(true);
         p11.setImage(b11);
         addObject(p11, x, y);
         
-        Platform p12 = new Platform();
+        Platform p12 = new Platform(true);
         p12.setImage(b11);
         addObject(p12, x-30, y);
     }

@@ -69,13 +69,13 @@ public class Lvl1Screen1 extends Levels
         x=430;
         y-=80;
         for(int i=0; i < 3; i++){
-            addObject(new Platform(), x, y);
+            addObject(new Platform(true), x, y);
             x+=30;
         }
         x+=30;
         y-=80;
         for(int i=0; i < 3; i++){
-            addObject(new Platform(), x, y);
+            addObject(new Platform(true), x, y);
             x+=30;
         }                
     }

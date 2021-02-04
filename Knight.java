@@ -49,11 +49,14 @@ public class Knight extends Actor
         
         if(Greenfoot.isKeyDown("left")){
             isKeyDown = true;
-            horizontalSpeed = -WALKING;           
+            if(!hitWallLeft()) horizontalSpeed = -WALKING;
+            else horizontalSpeed = 0;
         }
         if(Greenfoot.isKeyDown("right")){
-            isKeyDown = true;;
-            horizontalSpeed = WALKING;
+            isKeyDown = true;
+            if(!hitWallRight()) horizontalSpeed = WALKING;
+            else horizontalSpeed = 0;
+
         }
         if(Greenfoot.isKeyDown("up")){
             isKeyDown = true;
@@ -83,16 +86,27 @@ public class Knight extends Actor
     public void jump(){
         if(verticalSpeed == 0 && !isJumping){
             //play jumping sound?
-            verticalSpeed = JUMPVELOCITY;
-            isJumping = true;
+            if(!hitWallUp()){
+                verticalSpeed = JUMPVELOCITY;
+                isJumping = true;
+            }
         }
         
     }
     
     public void applyMovement(){
         int x = getX() + horizontalSpeed;
-        int y = getY() - (int)verticalSpeed;
-        setLocation(x, y);
+        int y = getY();
+        if(hitWallUp()){
+            fall();
+            return;
+        }
+        else {
+            y = getY() - (int)verticalSpeed;
+            setLocation(x, y);
+        }
+
+        
     }
     
     public void applyGravity(){
@@ -100,7 +114,7 @@ public class Knight extends Actor
         int y = getY();
         boolean touchingGround = false;
         List<Platform> intersectingPlatforms = 
-        (List<Platform>)getObjectsInRange(32, Platform.class);
+        (List<Platform>)getObjectsInRange(30, Platform.class);
         
         List<Ground> ground = this.getObjectsInRange(32, Ground.class);
         if((ground.size() > 0) && (Math.abs(ground.get(0).getTop() - this.getY())<=13)) {
@@ -113,7 +127,7 @@ public class Knight extends Actor
         
         for (Platform plat : intersectingPlatforms) {
             if (verticalSpeed <= 0) {
-                if (Math.abs(this.getY() - plat.getTop()) <= 13) {
+                if ((Math.abs(this.getY() - plat.getTop()) <= 13) && plat.canLand()) {   
                     touchingGround = true;
                     y = plat.getTop()-13;
                     verticalSpeed = 0;
@@ -171,6 +185,44 @@ public class Knight extends Actor
             decrementHealth();
             this.getWorld().removeObject(touchingF.get(0));
         }
+    }
+    
+    public boolean hitWallLeft(){
+        //check if wall to the left of actor
+        List<Platform> toLeft = this.getObjectsInRange(30, Platform.class);
+        for(Platform p : toLeft){            
+            if(p.getX() < this.getX() && Math.abs(p.getY()-this.getY()) < 20){
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public boolean hitWallRight(){
+        List<Platform> toRight = this.getObjectsInRange(30, Platform.class);
+        for(Platform p : toRight){
+            if(p.getX() > this.getX() && Math.abs(p.getY()-this.getY()) <= 20){
+                return true;
+            }
+        }
+        return false;        
+    }
+    
+    public boolean hitWallUp(){
+        List<Platform> touching = this.getObjectsInRange(30, Platform.class);
+        for(Platform p : touching){
+            if(p.getY() < this.getY() && Math.abs(p.getX()-this.getX()) <= 20){
+                return true;
+            }
+        }
+        return false;         
+    }
+    
+    public void fall(){
+        //this is only after hitting a block above
+        //get block above
+        //increase Y until not touching anymore
+        setLocation(getX(), getY()+20);
     }
     
 }

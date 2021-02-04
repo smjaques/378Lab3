@@ -8,6 +8,12 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Platform extends Actor
 {
+    private boolean canLand = false;
+    
+    public Platform(boolean top){
+        canLand=top;
+    }
+
     /**
      * Act - do whatever the Platform wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -19,5 +25,10 @@ public class Platform extends Actor
     
     public int getTop(){
         return getY() - getImage().getHeight() / 2;    
+    }
+
+    
+    public boolean canLand(){
+        return canLand;
     }
 }
