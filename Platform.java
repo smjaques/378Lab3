@@ -13,6 +13,11 @@ public class Platform extends Actor
     public Platform(boolean top){
         canLand=top;
     }
+    
+    public Platform(boolean top, GreenfootImage image){
+        canLand=top;
+        setImage(image);
+    }
 
     /**
      * Act - do whatever the Platform wants to do. This method is called whenever
