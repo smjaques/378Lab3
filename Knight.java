@@ -74,6 +74,10 @@ public class Knight extends Actor
     public void updateHealth(){       
         ((Levels)getWorld()).updateHealthLevel(healthLevel);
     }
+    
+    public void setHealth(int h){
+        healthLevel = h;
+    }
    
     
     public void decrementHealth(){
@@ -121,7 +125,7 @@ public class Knight extends Actor
         
         for (Platform plat : intersectingPlatforms) {
             if (verticalSpeed <= 0) {
-                if ((Math.abs(this.getY() - plat.getTop()) <= 13) && plat.canLand()) {   
+                if ((Math.abs(this.getY() - plat.getTop()) <= 10) && plat.canLand()) {   
                     touchingGround = true;
                     y = plat.getTop()-13;
                     verticalSpeed = 0;
@@ -152,6 +156,8 @@ public class Knight extends Actor
     public void checkIfDied(){
         // if touching lower edge
         if(this.getY() >= 388){
+            //play a dying sound for knight
+            Greenfoot.playSound("Knight_Hurt.wav");
             resetLevel();            
         }
         
@@ -167,22 +173,26 @@ public class Knight extends Actor
     public void resetLevel(){
         if(this.getWorld().toString().contains("Lvl1")){
             Greenfoot.setWorld(new Lvl1Screen1());
-        }        
+        }       
     }
     
     public void checkNextScreen(){
-        if(this.getX() >= 580){
+        
+        if(this.getObjectsInRange(10, InvisiblePortal.class).size() > 0){
             if (getWorld() instanceof Lvl1Screen1) Greenfoot.setWorld(new Lvl1Screen2(healthLevel));
+            else if (getWorld() instanceof Lvl1Screen2) Greenfoot.setWorld(new Lvl1Screen3(healthLevel));
+            else if (getWorld() instanceof Lvl1Screen3) Greenfoot.setWorld(new Lvl1Screen4(healthLevel));
  
         }
     }
     
     public void checkHealthDecrement(){
-        List<Fireball> touchingF = this.getObjectsInRange(20, Fireball.class);
+        List<Enemy> touchingF = this.getObjectsInRange(20, Enemy.class);
         
         if(touchingF.size() > 0){
             decrementHealth();
-            this.getWorld().removeObject(touchingF.get(0));
+            
+            //this.getWorld().removeObject(touchingF.get(0));
         }
     }
     

@@ -77,7 +77,10 @@ public class Lvl1Screen1 extends Levels
         for(int i=0; i < 3; i++){
             addObject(new Platform(true), x, y);
             x+=30;
-        }                
+        }
+        
+        InvisiblePortal portal = new InvisiblePortal();
+        addObject(portal,600,150);
     }
     
     public void releaseFireball(){

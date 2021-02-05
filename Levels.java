@@ -8,6 +8,18 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Levels extends World
 {
+        GreenfootImage b1 = new GreenfootImage("BlocksSimple1.png");
+        GreenfootImage b2 = new GreenfootImage("BlocksSimple2.png");
+        GreenfootImage b3 = new GreenfootImage("BlocksSimple3.png");
+        GreenfootImage b4 = new GreenfootImage("BlocksSimple4.png");
+        GreenfootImage b5 = new GreenfootImage("BlocksSimple5.png");
+        GreenfootImage b6 = new GreenfootImage("BlocksSimple6.png");
+        GreenfootImage b7 = new GreenfootImage("BlocksSimple7.png");
+        GreenfootImage b8 = new GreenfootImage("BlocksSimple8.png");
+        GreenfootImage b9 = new GreenfootImage("BlocksSimple9.png");
+        GreenfootImage b10 = new GreenfootImage("BlocksSimple10.png");
+        GreenfootImage b11 = new GreenfootImage("BlocksSimple11.png");
+        GreenfootImage b12 = new GreenfootImage("BlocksSimple12.png");
     Health half1 = new Health();
     Health half2 = new Health();
     Health half3 = new Health();
@@ -54,10 +66,6 @@ public class Levels extends World
     public void updateHealthLevel(int level){       
         if(level==6){
             //full health
-            return;
-        }
-        else if(level==0){
-            //game over
             return;
         }
         int l = 5;

@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=Lvl1Screen4
+comment0.text=\n\ Write\ a\ description\ of\ class\ Lvl1Screen4\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=health
+comment1.target=Lvl1Screen4(int)
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ Lvl1Screen4.\n\ \n
+comment2.params=
+comment2.target=void\ drawPath()
+comment3.params=
+comment3.target=void\ addBats()
+numComments=4

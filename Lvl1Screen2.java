@@ -17,28 +17,18 @@ public class Lvl1Screen2 extends Levels
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super();
+        
         printLevel("Lvl 1");
         addHealth();
         updateHealthLevel(health);
         drawPath();
+        addBats();
         Knight knight = new Knight();
+        knight.setHealth(health);
         addObject(knight,20,310);
     }
     
-    public void drawPath(){
-        GreenfootImage b1 = new GreenfootImage("BlocksSimple1.png");
-        GreenfootImage b2 = new GreenfootImage("BlocksSimple2.png");
-        GreenfootImage b3 = new GreenfootImage("BlocksSimple3.png");
-        GreenfootImage b4 = new GreenfootImage("BlocksSimple4.png");
-        GreenfootImage b5 = new GreenfootImage("BlocksSimple5.png");
-        GreenfootImage b6 = new GreenfootImage("BlocksSimple6.png");
-        GreenfootImage b7 = new GreenfootImage("BlocksSimple7.png");
-        GreenfootImage b8 = new GreenfootImage("BlocksSimple8.png");
-        GreenfootImage b9 = new GreenfootImage("BlocksSimple9.png");
-        GreenfootImage b10 = new GreenfootImage("BlocksSimple10.png");
-        GreenfootImage b11 = new GreenfootImage("BlocksSimple11.png");
-        GreenfootImage b12 = new GreenfootImage("BlocksSimple12.png");       
-        
+    public void drawPath(){  
         
         int y=339;
         int x=10;
@@ -130,5 +120,62 @@ public class Lvl1Screen2 extends Levels
         Platform p12 = new Platform(true);
         p12.setImage(b11);
         addObject(p12, x-30, y);
+        
+        x=290;
+        y=245;
+        Platform p13 = new Platform(true);
+        p13.setImage(b11);
+        addObject(p13, x, y);
+        
+        x=380;
+        y=185;
+        Platform p14 = new Platform(true);
+        p14.setImage(b7);
+        addObject(p14, x, y);
+        
+        Platform p15 = new Platform(false);
+        p15.setImage(b10);
+        addObject(p15, x, y+30);
+        
+        for(int i = 0; i < 7; i++){
+            addObject(new Platform(true), x+=30, y);
+            Platform p16 = new Platform(false);
+            p16.setImage(b4);
+            addObject(p16, x, y+30);
+        }
+        
+        x=480;
+        y=247;
+        Platform p17 = new Platform(false);
+        p17.setImage(b7);
+        addObject(p17, x, y);
+        
+        Platform p18 = new Platform(false);
+        p18.setImage(b6);
+        addObject(p18, x, y+30);
+        
+        Platform p19 = new Platform(false);
+        p19.setImage(b10);
+        addObject(p19, x, y+60);
+        
+        for(int i=0; i < 5; i++){
+            addObject(new Platform(false), x+=30, y);
+            addObject(new InnerBlock(), x, y+30);
+            Platform p20 = new Platform(false);
+            p20.setImage(b4);
+            addObject(p20, x, y+60);
+        }
+        
+        InvisiblePortal portal = new InvisiblePortal();
+        addObject(new InvisiblePortal(), 600, 150);
+    }
+    
+    public void addBats(){
+        Bat b1 = new Bat();
+        addObject(b1, 30, 40);
+        
+        Bat b2 = new Bat();
+        b2.setImage(new GreenfootImage("batFlyL1.png"));
+        addObject(b2, 575, 90);
     }
 }

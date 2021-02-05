@@ -1,22 +1,17 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class Fireball here.
+ * Write a description of class Enemy here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Fireball extends Enemy
+public class Enemy extends Actor
 {
     /**
-     * Act - do whatever the Fireball wants to do. This method is called whenever
+     * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
-    public Fireball(){
-        GreenfootImage fireball = getImage();
-        fireball.scale(40,20);
-        setImage(fireball);    
-    }
     public void act() 
     {
         // Add your action code here.
