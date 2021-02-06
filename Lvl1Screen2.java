@@ -171,10 +171,10 @@ public class Lvl1Screen2 extends Levels
     }
     
     public void addBats(){
-        Bat b1 = new Bat();
+        Bat b1 = new Bat(1);
         addObject(b1, 30, 40);
         
-        Bat b2 = new Bat();
+        Bat b2 = new Bat(1);
         b2.setImage(new GreenfootImage("batFlyL1.png"));
         addObject(b2, 575, 90);
     }

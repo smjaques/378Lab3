@@ -29,13 +29,13 @@ public class Lvl1Screen1 extends Levels
         addHealth();
         drawPath();
         Knight knight = new Knight();
-        addObject(knight,20,310);
+        addObject(knight,20,295);
     }
     
     public void act(){
         timer-=1;
         if(timer==0){
-            releaseFireball();
+            //releaseFireball();
             //release fireball
             timer=50;
         }
@@ -67,7 +67,7 @@ public class Lvl1Screen1 extends Levels
             
         }
         x=430;
-        y-=80;
+        y-=95;
         for(int i=0; i < 3; i++){
             addObject(new Platform(true), x, y);
             x+=30;
@@ -80,11 +80,11 @@ public class Lvl1Screen1 extends Levels
         }
         
         InvisiblePortal portal = new InvisiblePortal();
-        addObject(portal,600,150);
+        addObject(portal,593,130);
     }
     
     public void releaseFireball(){
-        Fireball fireball = new Fireball();
+        Fireball fireball = new Fireball(1);
         addObject(fireball, FBX, FBY);
     }
     

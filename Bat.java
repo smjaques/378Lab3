@@ -24,6 +24,15 @@ public class Bat extends Enemy
     private int spriteImage = 1;
     private int changeImage = 4;
     
+    private int lives;
+    
+    
+    public Bat(int lives){
+        lives=lives;
+        
+    }
+    
+    
     /**
      * Act - do whatever the Bat wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -31,6 +40,7 @@ public class Bat extends Enemy
     public void act() 
     {
         fly();
+ 
         // Add your action code here.
     }
     
@@ -57,4 +67,13 @@ public class Bat extends Enemy
         
         
     }
+    
+    public void attacked(){
+        lives--;
+        if(lives==0){
+            getWorld().removeObject(this);
+        }
+    }
+    
+
 }

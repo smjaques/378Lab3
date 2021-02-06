@@ -59,7 +59,7 @@ public class FireballSpawner extends Actor
     }    
     
     public void releaseFireball(){
-        Fireball fireball = new Fireball();
+        Fireball fireball = new Fireball(1);
         getWorld().addObject(fireball, getX(), getY());
         children.add(fireball);
     }

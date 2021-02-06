@@ -9,10 +9,10 @@ import java.util.List;
  */
 public class Knight extends Actor
 {
-    private int Xcord = 20;
-    private int Ycord = 230;
-    private int GROUND = 230;
+    private int GROUND = 295;
     private int healthLevel = 6;
+    private boolean invincible = false;
+    private int invincibilityTimer = 20;
     
     // time allowed in air for single jump
     private boolean isJumping = false;
@@ -23,18 +23,96 @@ public class Knight extends Actor
     private int GRAVITY = -7;
     private double GRAVITY_DELTA = 1;
     private int WALKING = 2;
+       
+    //ANIMATION
+    private int changeAnimation = 5;
+    private final int CHANGE = 5;
+    private int lastDir = 1; //positive=right, neg=left
     
-    //moving
+    //idle
+    GreenfootImage[] idleL = {new GreenfootImage("knightIdleL1.png"), new GreenfootImage("knightIdleL2.png"), new GreenfootImage("knightIdleL3.png")};
+    GreenfootImage[] idleR = new GreenfootImage[idleL.length];
+    private int idleNum = 0;
+    private int idleClock = 100;
+    private int CLOCK = 100;
+    
+    //hurt
+    GreenfootImage hurtL = new GreenfootImage("knightHurtL.png");
+    GreenfootImage hurtR;
+    
+    //jump
+    GreenfootImage[] jumpL = {new GreenfootImage("knightJumpL1.png"), new GreenfootImage("knightJumpL2.png"), new GreenfootImage("knightJumpL3.png")};
+    GreenfootImage[] jumpR = new GreenfootImage[jumpL.length];
+    private int jumpNum = 0;
+    
+    //run
+    GreenfootImage[] runL = {new GreenfootImage("knightRunL1.png"), new GreenfootImage("knightRunL2.png"), new GreenfootImage("knightRunL3.png"), new GreenfootImage("knightRunL4.png")};
+    GreenfootImage runR[] = new GreenfootImage[runL.length];   //declaring array
+    private int runNum = 0;
+    
+    //trait
+    GreenfootImage[] traitL = {new GreenfootImage("knightTraitL1.png"), new GreenfootImage("knightTraitL2.png"), new GreenfootImage("knightTraitL3.png"), new GreenfootImage("knightTraitL4.png"), new GreenfootImage("knightTraitL5.png"), new GreenfootImage("knightTraitL6.png")};
+    GreenfootImage[] traitR = new GreenfootImage[traitL.length];
+    private int traitNum = 0;
+    
+    //fight
+    GreenfootImage[] fightL = {new GreenfootImage("knightFightL1.png"), new GreenfootImage("knightFightL2.png")};
+    GreenfootImage[] fightR = new GreenfootImage[fightL.length];
+    private int fightClock = 8;
+    private boolean isFighting = false;
     
     public Knight(){
-        GreenfootImage knight = getImage();
-        knight.scale(140,140);
-        setImage(knight);    
+        getMirrors();
     }
+    
+    public void getMirrors(){
+        //run
+        for(int i=0; i < runL.length; i++){
+            GreenfootImage img = new GreenfootImage(runL[i]);
+            img.mirrorHorizontally();
+            runR[i] = img;
+        }
+        
+        //idle
+        for(int i=0; i < idleL.length; i++){
+            GreenfootImage img = new GreenfootImage(idleL[i]);
+            img.mirrorHorizontally();
+            idleR[i] = img;
+        }
+        
+        //trait
+        for(int i=0; i < traitL.length; i++){
+            GreenfootImage img = new GreenfootImage(traitL[i]);
+            img.mirrorHorizontally();
+            traitR[i] = img;
+        } 
+        
+        //hurt
+        GreenfootImage img2 = new GreenfootImage(hurtL);
+        img2.mirrorHorizontally();
+        hurtR = img2;
+        
+        //jump
+        for(int i=0; i < jumpL.length; i++){
+            GreenfootImage img = new GreenfootImage(jumpL[i]);
+            img.mirrorHorizontally();
+            jumpR[i] = img;
+        }
+        
+        //fight
+        for(int i=0; i < fightL.length; i++){
+            GreenfootImage img = new GreenfootImage(fightL[i]);
+            img.mirrorHorizontally();
+            fightR[i] = img;
+        }        
+        
+    }
+    
+
     public void act() 
     {
-        //setLocation(Xcord, Ycord);
         processKeys();
+        invincibility();
         updateHealth();
         applyMovement();
         applyGravity();
@@ -49,46 +127,98 @@ public class Knight extends Actor
         
         if(Greenfoot.isKeyDown("left")){
             isKeyDown = true;
-            if(!hitWallLeft()) horizontalSpeed = -WALKING;
-            else horizontalSpeed = 0;
+            lastDir=-1;
+            if(!hitWallLeft()) {
+                horizontalSpeed = -WALKING;
+                setLeftRun();
+            }
+            else{
+                horizontalSpeed = 0;
+                setIdle();
+            }
         }
         if(Greenfoot.isKeyDown("right")){
             isKeyDown = true;
-            if(!hitWallRight()) horizontalSpeed = WALKING;
-            else horizontalSpeed = 0;
+            lastDir=1;
+            if(!hitWallRight()){
+                horizontalSpeed = WALKING;
+                setRightRun();               
+            }
+            else {
+                horizontalSpeed = 0;
+                setIdle();
+            }
 
         }
         if(Greenfoot.isKeyDown("up")){
             isKeyDown = true;
+            idleClock=CLOCK;
             jump();
                        
         }
+        if(Greenfoot.isKeyDown("space")){          
+            attack();
+        }
         if (!isKeyDown){
             horizontalSpeed = 0;
-            //idle animation
+            
+
+            if(!isJumping && !isFighting){
+                //check if been idling for long enough
+                if(idleClock==0) setTraitIdle();
+                else {
+                    setIdle();
+                    idleClock--;
+                }
+            }
+            
+            else if(isFighting){
+                if(fightClock==0){
+                    isFighting=false;
+                    fightClock=8;
+                } else fightClock--;    
+                }
+            
         }
+        
        
         
     }
     
-    public void updateHealth(){       
+    public void updateHealth(){ 
         ((Levels)getWorld()).updateHealthLevel(healthLevel);
     }
     
     public void setHealth(int h){
         healthLevel = h;
     }
-   
+  
     
     public void decrementHealth(){
-        // hit or fall causes health to decrease
-        Greenfoot.playSound("Knight_Hurt.wav");
-        healthLevel-=1;
+        if(!invincible){
+            setHurt();
+            Greenfoot.playSound("Knight_Hurt.wav");
+            healthLevel-=1;
+            invincible = true;
+        }
+    }
+    
+    public void invincibility(){
+        if(invincible){
+            if(invincibilityTimer==0){
+                invincible = false;
+                invincibilityTimer = 20;
+            }
+            else invincibilityTimer--;
+            
+        }
     }
     
     public void jump(){
         if(verticalSpeed == 0 && !isJumping){
             //play jumping sound?
+            //set jump animation
+            setStartJump();
             verticalSpeed = JUMPVELOCITY;
             isJumping = true;
         }
@@ -97,6 +227,7 @@ public class Knight extends Actor
     }
     
     public void applyMovement(){
+        System.out.println("applyMovement()");
         int x = getX() + horizontalSpeed;
         int y = getY();
         if(!hitWallUp(y-(int)verticalSpeed)){
@@ -108,14 +239,15 @@ public class Knight extends Actor
     }
     
     public void applyGravity(){
+        System.out.println("applyGravity()");
         int x = getX();
         int y = getY();
         boolean touchingGround = false;
         List<Platform> intersectingPlatforms = 
-        (List<Platform>)getObjectsInRange(30, Platform.class);
+        (List<Platform>)getObjectsInRange(45, Platform.class);
         
-        List<Ground> ground = this.getObjectsInRange(32, Ground.class);
-        if((ground.size() > 0) && (Math.abs(ground.get(0).getTop() - this.getY())<=13)) {
+        List<Ground> ground = this.getObjectsInRange(45, Ground.class);
+        if((ground.size() > 0) && (Math.abs(ground.get(0).getTop() - this.getY())<=28)) {
             touchingGround = true;
             verticalSpeed=0;
             isJumping = false;
@@ -125,13 +257,15 @@ public class Knight extends Actor
         
         for (Platform plat : intersectingPlatforms) {
             if (verticalSpeed <= 0) {
-                if ((Math.abs(this.getY() - plat.getTop()) <= 10) && plat.canLand()) {   
-                    touchingGround = true;
-                    y = plat.getTop()-13;
-                    verticalSpeed = 0;
-                    isJumping = false;
-                    setLocation(x, y + 2);
-                    return;
+                if ((Math.abs(this.getY() - plat.getTop()) <= 25) && plat.canLand()) {
+                    if(Math.abs(this.getX() - plat.getX()) <=30){
+                        touchingGround = true;
+                        y = plat.getTop()-25;
+                        verticalSpeed = 0;
+                        isJumping = false;
+                        setLocation(x, y);
+                        return;
+                    }
                 
                 }               
             }           
@@ -142,8 +276,9 @@ public class Knight extends Actor
             y+=20;
         }
         setLocation(x, y);
-       
+        if(!touchingGround) setMidJump();
         if (verticalSpeed > GRAVITY && !touchingGround) {
+            //still going up
             verticalSpeed = verticalSpeed - GRAVITY_DELTA;
         }        
 
@@ -164,10 +299,8 @@ public class Knight extends Actor
         // if ran out of lives
         if(healthLevel == 0){
             //game over
-            resetLevel();
-            
-        }
-        
+            resetLevel();            
+        }      
     }
     
     public void resetLevel(){
@@ -182,6 +315,8 @@ public class Knight extends Actor
             if (getWorld() instanceof Lvl1Screen1) Greenfoot.setWorld(new Lvl1Screen2(healthLevel));
             else if (getWorld() instanceof Lvl1Screen2) Greenfoot.setWorld(new Lvl1Screen3(healthLevel));
             else if (getWorld() instanceof Lvl1Screen3) Greenfoot.setWorld(new Lvl1Screen4(healthLevel));
+            else if (getWorld() instanceof Lvl1Screen4) Greenfoot.setWorld(new Lvl1Screen5(healthLevel));
+            else if (getWorld() instanceof Lvl1Screen5) Greenfoot.setWorld(new Lvl1Screen6(healthLevel));
  
         }
     }
@@ -189,7 +324,7 @@ public class Knight extends Actor
     public void checkHealthDecrement(){
         List<Enemy> touchingF = this.getObjectsInRange(20, Enemy.class);
         
-        if(touchingF.size() > 0){
+        if(touchingF.size() > 0){ //but not if attacking!
             decrementHealth();
             
             //this.getWorld().removeObject(touchingF.get(0));
@@ -227,5 +362,120 @@ public class Knight extends Actor
         return false;         
     }
     
+    public void attack(){ 
+        isFighting=true;
+        setAttack();
+        List<Enemy> touching = this.getObjectsInRange(30, Enemy.class);
+        for(Enemy e : touching){
+            invincible=true;
+            if(e.getLives()==0) getWorld().removeObject(e);
+            
+        }
+                
+    }
     
+    //ANIMATIONS
+    public void setLeftRun(){
+        if(changeAnimation!=0){
+            changeAnimation--;
+            return;
+        }
+        changeAnimation=CHANGE;
+        setImage(runL[runNum]);
+        if(runNum==3) runNum=0;
+        else runNum++;
+        traitNum=0;
+        jumpNum=0;
+        idleNum=0; 
+        idleClock=CLOCK;
+    }
+    
+    public void setRightRun(){
+        if(changeAnimation!=0){
+            changeAnimation--;
+            return;
+        }
+        changeAnimation=CHANGE;
+        setImage(runR[runNum]);
+        if(runNum==3) runNum=0;
+        else runNum++;
+        traitNum=0;
+        jumpNum=0;
+        idleNum=0; 
+        idleClock=CLOCK;
+        
+    }
+    
+    public void setIdle(){
+        System.out.println("setting idle");
+        //check if ready to change image (can't be too fast)
+        if(changeAnimation==0){
+            changeAnimation=CHANGE;            
+            //check way facing
+            if(lastDir>0) setImage(idleR[idleNum]);
+            else setImage(idleL[idleNum]);
+            
+            if(idleNum==idleL.length-1) idleNum=0;
+            else idleNum++;
+            runNum=0;
+            traitNum=0;
+            jumpNum=0;
+        }
+        else changeAnimation--;
+    }
+        
+    public void setTraitIdle(){
+        if(changeAnimation!=0){
+            changeAnimation--;
+            return;
+        }
+        changeAnimation=CHANGE;
+        
+        //check way facing
+        if(lastDir>0) setImage(traitR[traitNum]);
+        else setImage(traitL[traitNum]);
+        
+        if(traitNum==5) traitNum=0;
+        else traitNum++;
+        idleNum=0;
+        runNum=0;
+        jumpNum=0;
+    }
+    
+    public void setStartJump(){
+        if(lastDir>0) setImage(jumpR[0]);
+        else setImage(jumpL[0]);  
+        
+        idleNum=0;
+        runNum=0;
+        traitNum=0;
+        idleClock=CLOCK;
+    }
+    
+    public void setMidJump(){
+        if(lastDir>0) setImage(jumpR[1]);
+        else setImage(jumpL[1]);         
+    }
+    
+    public void setHurt(){
+        if(lastDir>0) setImage(hurtR);
+        else setImage(hurtL);  
+        
+        idleNum=0;
+        runNum=0;
+        traitNum=0;
+        idleClock=CLOCK;       
+    }
+    
+    public void setAttack(){
+        if(lastDir>0) setImage(fightR[1]);
+        else setImage(fightL[1]);  
+        
+        jumpNum=0;
+        idleNum=0;
+        runNum=0;
+        traitNum=0;
+        idleClock=CLOCK;        
+    }
+        
 }

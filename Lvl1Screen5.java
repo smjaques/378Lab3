@@ -106,13 +106,4 @@ public class Lvl1Screen5 extends Levels
         addP(new Platform(false,b10), TILE_W-5, 5);
     }
     
-    public void addBats(){
-        Bat b1 = new Bat();
-        addObject(b1, 30, 40);
-        
-        Bat b2 = new Bat();
-        b2.setImage(new GreenfootImage("batFlyL1.png"));
-        addObject(b2, 575, 90);
-    }
-    
 }
