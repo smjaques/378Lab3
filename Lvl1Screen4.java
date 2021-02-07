@@ -36,7 +36,7 @@ public class Lvl1Screen4 extends Levels
             addObject(new InnerBlock(), x, y+80);
             x+=30;            
         }
-        x+=90;
+        x+=85;
         for(int i = 0; i < 6; i++){
             addObject(new Ground(), x, y);
             addObject(new InnerBlock(), x, y+20);

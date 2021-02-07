@@ -245,8 +245,8 @@ public class Knight extends Actor
         (List<Platform>)getObjectsInRange(45, Platform.class);
         
         List<Ground> ground = this.getObjectsInRange(45, Ground.class);
-        if((ground.size() > 0) && (Math.abs(ground.get(0).getTop() - this.getY())<=26)) {
-            if(Math.abs(this.getX() - ground.get(0).getX()) <=20){            
+        if((ground.size() > 0) && (Math.abs(ground.get(0).getTop() - this.getY())<=25)) {
+            if(Math.abs(this.getX() - ground.get(0).getX()) <=25){            
                 touchingGround = true;
                 verticalSpeed=0;
                 isJumping = false;
@@ -279,6 +279,7 @@ public class Knight extends Actor
         if(!touchingGround) setMidJump();
         if (verticalSpeed > GRAVITY && !touchingGround) {
             //still going up
+            System.out.println("gravity?");
             verticalSpeed = verticalSpeed - GRAVITY_DELTA;
         }        
 
