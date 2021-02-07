@@ -26,8 +26,7 @@ public class PrincessRoom extends Levels
         printLevel("Lvl 1");
         drawPath();
         //addSlime();
-        Knight knight = new Knight();
-        addObject(knight,120,(TILE_H-4)*BLOCK_SIZE);
+        addObject(new Princess(),120,(TILE_H-4)*BLOCK_SIZE);
         addObject(new InvisiblePortal(), 600-60, 400-120);
     }
     
