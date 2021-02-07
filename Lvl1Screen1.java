@@ -40,6 +40,7 @@ public class Lvl1Screen1 extends Levels
             timer=50;
         }
         
+        
         List<Fireball> fb = getObjects(Fireball.class);
         for (Fireball f : fb){
             f.setLocation(f.getX()-10, f.getY());
@@ -54,15 +55,15 @@ public class Lvl1Screen1 extends Levels
         int x=10;
         for(int i = 0; i < 7; i++){
             addObject(new Ground(), x, y);
-            addObject(new InnerBlock(), x, y+20);
-            addObject(new InnerBlock(), x, y+50);
+            addObject(new InnerBlock(), x, y+30);
+            addObject(new InnerBlock(), x, y+60);
             x+=30;            
         }
         x+=70;
         for(int i=0; i < 11; i++){
             addObject(new Ground(), x, y);
-            addObject(new InnerBlock(), x, y+20);
-            addObject(new InnerBlock(), x, y+50);
+            addObject(new InnerBlock(), x, y+30);
+            addObject(new InnerBlock(), x, y+60);
             x+=30;
             
         }
@@ -81,6 +82,8 @@ public class Lvl1Screen1 extends Levels
         
         InvisiblePortal portal = new InvisiblePortal();
         addObject(portal,593,130);
+        
+        addObject(new Slime(1), 435, 200);
     }
     
     public void releaseFireball(){

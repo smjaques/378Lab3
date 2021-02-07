@@ -23,7 +23,7 @@ public class Lvl1Screen3 extends Levels
         drawPath();
         addBats();
         Knight knight = new Knight();
-        addObject(knight,20,230);
+        addObject(knight,20,215);
     }
     
     public void drawPath(){

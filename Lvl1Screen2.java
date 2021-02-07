@@ -25,7 +25,7 @@ public class Lvl1Screen2 extends Levels
         addBats();
         Knight knight = new Knight();
         knight.setHealth(health);
-        addObject(knight,20,310);
+        addObject(knight,20,295);
     }
     
     public void drawPath(){  

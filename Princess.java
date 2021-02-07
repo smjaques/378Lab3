@@ -7,7 +7,7 @@ import java.util.List;
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Knight extends Actor
+public class Princess extends Actor
 {
     private int GROUND = 295;
     private int healthLevel = 6;
@@ -30,38 +30,41 @@ public class Knight extends Actor
     private int lastDir = 1; //positive=right, neg=left
     
     //idle
-    GreenfootImage[] idleL = {new GreenfootImage("knightIdleL1.png"), new GreenfootImage("knightIdleL2.png"), new GreenfootImage("knightIdleL3.png")};
+    GreenfootImage[] idleL = {new GreenfootImage("princessIdleL1.png"), new GreenfootImage("princessIdleL2.png"), new GreenfootImage("princessIdleL3.png"), new GreenfootImage("princessIdleL4.png")};
     GreenfootImage[] idleR = new GreenfootImage[idleL.length];
     private int idleNum = 0;
     private int idleClock = 100;
     private int CLOCK = 100;
-    
-    //hurt
-    GreenfootImage hurtL = new GreenfootImage("knightHurtL.png");
-    GreenfootImage hurtR;
+  
     
     //jump
-    GreenfootImage[] jumpL = {new GreenfootImage("knightJumpL1.png"), new GreenfootImage("knightJumpL2.png"), new GreenfootImage("knightJumpL3.png")};
+    GreenfootImage[] jumpL = {new GreenfootImage("princessJumpL1.png"), new GreenfootImage("princessJumpL2.png"), new GreenfootImage("princessJumpL3.png")};
     GreenfootImage[] jumpR = new GreenfootImage[jumpL.length];
     private int jumpNum = 0;
     
     //run
-    GreenfootImage[] runL = {new GreenfootImage("knightRunL1.png"), new GreenfootImage("knightRunL2.png"), new GreenfootImage("knightRunL3.png"), new GreenfootImage("knightRunL4.png")};
+    GreenfootImage[] runL = {new GreenfootImage("princessSwordRunL1.png"), new GreenfootImage("princessSwordRunL2.png"), new GreenfootImage("princessSwordRunL3.png"), new GreenfootImage("princessSwordRunL4.png")};
     GreenfootImage runR[] = new GreenfootImage[runL.length];   //declaring array
     private int runNum = 0;
     
+
     //trait
-    GreenfootImage[] traitL = {new GreenfootImage("knightTraitL1.png"), new GreenfootImage("knightTraitL2.png"), new GreenfootImage("knightTraitL3.png"), new GreenfootImage("knightTraitL4.png"), new GreenfootImage("knightTraitL5.png"), new GreenfootImage("knightTraitL6.png")};
+    GreenfootImage[] traitL = {new GreenfootImage("princessTraitL1.png"), new GreenfootImage("princessTraitL2.png")};
     GreenfootImage[] traitR = new GreenfootImage[traitL.length];
     private int traitNum = 0;
     
     //fight
-    GreenfootImage[] fightL = {new GreenfootImage("knightFightL1.png"), new GreenfootImage("knightFightL2.png")};
+    GreenfootImage[] fightL = {new GreenfootImage("princessFightL1.png"), new GreenfootImage("princessFightL2.png")};
     GreenfootImage[] fightR = new GreenfootImage[fightL.length];
     private int fightClock = 8;
     private boolean isFighting = false;
     
-    public Knight(){
+    //victory
+    GreenfootImage[] victoryL = {new GreenfootImage("princessVictoryL1.png"), new GreenfootImage("princessVictoryL2.png")};
+    GreenfootImage[] victoryR = new GreenfootImage[fightL.length];
+        
+    
+    public Princess(){
         getMirrors();
     }
     
@@ -87,10 +90,6 @@ public class Knight extends Actor
             traitR[i] = img;
         } 
         
-        //hurt
-        GreenfootImage img2 = new GreenfootImage(hurtL);
-        img2.mirrorHorizontally();
-        hurtR = img2;
         
         //jump
         for(int i=0; i < jumpL.length; i++){
@@ -104,8 +103,14 @@ public class Knight extends Actor
             GreenfootImage img = new GreenfootImage(fightL[i]);
             img.mirrorHorizontally();
             fightR[i] = img;
-        }        
+        }
         
+        //victory
+        for(int i=0; i < victoryL.length; i++){
+            GreenfootImage img = new GreenfootImage(victoryL[i]);
+            img.mirrorHorizontally();
+            victoryR[i] = img;
+        }        
     }
     
 
@@ -196,8 +201,7 @@ public class Knight extends Actor
     
     public void decrementHealth(){
         if(!invincible){
-            setHurt();
-            Greenfoot.playSound("Knight_Hurt.wav");
+            Greenfoot.playSound("Princess_Hurt.wav");
             healthLevel-=1;
             invincible = true;
         }
@@ -458,16 +462,7 @@ public class Knight extends Actor
         if(lastDir>0) setImage(jumpR[1]);
         else setImage(jumpL[1]);         
     }
-    
-    public void setHurt(){
-        if(lastDir>0) setImage(hurtR);
-        else setImage(hurtL);  
-        
-        idleNum=0;
-        runNum=0;
-        traitNum=0;
-        idleClock=CLOCK;       
-    }
+
     
     public void setAttack(){
         if(lastDir>0) setImage(fightR[1]);
