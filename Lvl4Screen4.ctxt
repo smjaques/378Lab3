@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=Lvl4Screen4
+comment0.text=\n\ Write\ a\ description\ of\ class\ ApproachingCastle\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=health
+comment1.target=Lvl4Screen4(int)
+comment2.params=
+comment2.target=void\ act()
+comment3.params=
+comment3.target=void\ drawPath()
+comment4.params=
+comment4.target=void\ releaseFireball()
+comment5.params=lvl
+comment5.target=void\ updateHealthLevel(int)
+numComments=6

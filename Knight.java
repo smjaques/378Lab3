@@ -369,7 +369,6 @@ public class Knight extends Actor
         for(Enemy e : touching){
             invincible=true;
             if(e.getLives()==0){
-                System.out.println("in knight");
                 getWorld().removeObject(e);
             }
             

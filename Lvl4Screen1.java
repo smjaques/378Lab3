@@ -1,30 +1,30 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.List;
 /**
- * Write a description of class Lvl1Screen4 here.
+ * Write a description of class Lvl4Screen1 here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Lvl1Screen4 extends Levels
+public class Lvl4Screen1 extends Levels
 {
     public int timer=80;
     /**
-     * Constructor for objects of class Lvl1Screen4.
+     * Constructor for objects of class Lvl4Screen1.
      * 
      */
-    public Lvl1Screen4(int health)
+    public Lvl4Screen1(int health)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super();
-        printLevel("Lvl 1");
+        printLevel("Lvl 4");
         addHealth();
         updateHealthLevel(health);
         drawPath();
         addBats();
-        Knight knight = new Knight();
-        knight.setHealth(health);
-        addObject(knight,20,277);
+        Princess princess = new Princess();
+        princess.setHealth(health);
+        addObject(princess,585,126);
     }
     
     public void act(){
@@ -97,7 +97,7 @@ public class Lvl1Screen4 extends Levels
 
 
         InvisiblePortal portal = new InvisiblePortal();
-        addObject(new InvisiblePortal(), 600, 130);
+        addObject(new InvisiblePortal(), 8, 277);
     }
     
     public void addBats(){

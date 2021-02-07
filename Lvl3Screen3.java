@@ -6,25 +6,24 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Lvl2Screen2 extends Levels
+public class Lvl3Screen3 extends Levels
 {
 
     /**
      * Constructor for objects of class Lvl1Screen6.
      * 
      */
-    public Lvl2Screen2(int health)
+    public Lvl3Screen3(int health)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super();
-        printLevel("Lvl 2");
+        printLevel("Lvl 3");
         addHealth();
         updateHealthLevel(health);
         drawPath();
-        //addSlime();
-        Knight knight = new Knight();
-        knight.setHealth(health);
-        addObject(knight,20,78);
+        Princess princess = new Princess();
+        princess.setHealth(health);
+        addObject(princess,575,280);
     }
     
     public void drawPath(){
@@ -188,7 +187,7 @@ public class Lvl2Screen2 extends Levels
         
         
         InvisiblePortal portal = new InvisiblePortal();
-        addObject(new InvisiblePortal(), 600, 280);
+        addObject(new InvisiblePortal(), 8, 80);
         
     }
    

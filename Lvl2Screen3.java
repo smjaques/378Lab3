@@ -6,14 +6,14 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Lvl2Screen2 extends Levels
+public class Lvl2Screen3 extends Levels
 {
 
     /**
      * Constructor for objects of class Lvl1Screen6.
      * 
      */
-    public Lvl2Screen2(int health)
+    public Lvl2Screen3(int health)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super();

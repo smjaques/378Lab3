@@ -316,11 +316,14 @@ public class Princess extends Actor
     public void checkNextScreen(){
         
         if(this.getObjectsInRange(10, InvisiblePortal.class).size() > 0){
-            if (getWorld() instanceof Lvl1Screen1) Greenfoot.setWorld(new Lvl1Screen2(healthLevel));
-            else if (getWorld() instanceof Lvl1Screen2) Greenfoot.setWorld(new Lvl1Screen3(healthLevel));
-            else if (getWorld() instanceof Lvl1Screen3) Greenfoot.setWorld(new Lvl1Screen4(healthLevel));
-            else if (getWorld() instanceof Lvl1Screen4) Greenfoot.setWorld(new Lvl2Screen1(healthLevel));
-            else if (getWorld() instanceof Lvl2Screen1) Greenfoot.setWorld(new Lvl2Screen2(healthLevel));
+            if (getWorld() instanceof Lvl3Screen1) Greenfoot.setWorld(new Lvl3Screen2(healthLevel));
+            else if (getWorld() instanceof Lvl3Screen2) Greenfoot.setWorld(new Lvl3Screen3(healthLevel));
+            else if (getWorld() instanceof Lvl3Screen3) Greenfoot.setWorld(new Lvl3Screen4(healthLevel));
+            else if (getWorld() instanceof Lvl3Screen4) Greenfoot.setWorld(new Lvl4Screen1(healthLevel));
+            else if (getWorld() instanceof Lvl4Screen1) Greenfoot.setWorld(new Lvl4Screen2(healthLevel));
+            else if (getWorld() instanceof Lvl4Screen2) Greenfoot.setWorld(new Lvl4Screen3(healthLevel));
+            else if (getWorld() instanceof Lvl4Screen3) Greenfoot.setWorld(new Lvl4Screen4(healthLevel));
+            //another final screen for victory?
  
         }
     }
