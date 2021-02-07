@@ -1,9 +1,9 @@
 #BlueJ class context
 comment0.target=PrincessRoom
-comment0.text=\r\n\ Write\ a\ description\ of\ class\ PrincessRoom\ here.\r\n\ \r\n\ @author\ (your\ name)\ \r\n\ @version\ (a\ version\ number\ or\ a\ date)\r\n
+comment0.text=\n\ Write\ a\ description\ of\ class\ PrincessRoom\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
 comment1.params=
 comment1.target=PrincessRoom()
-comment1.text=\r\n\ Constructor\ for\ objects\ of\ class\ PrincessRoom.\r\n\ \r\n
+comment1.text=\n\ Constructor\ for\ objects\ of\ class\ PrincessRoom.\n\ \n
 comment2.params=p\ x\ y
 comment2.target=void\ addP(Platform,\ int,\ int)
 comment3.params=

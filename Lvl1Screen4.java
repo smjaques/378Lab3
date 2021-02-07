@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
 /**
  * Write a description of class Lvl1Screen4 here.
  * 
@@ -8,7 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Lvl1Screen4 extends Levels
 {
-
+    public int timer=80;
     /**
      * Constructor for objects of class Lvl1Screen4.
      * 
@@ -26,6 +26,24 @@ public class Lvl1Screen4 extends Levels
         addObject(knight,20,277);
     }
     
+    public void act(){
+        timer-=1;
+        if(timer==0){
+            addObject(new Fireball(1),585, 145);
+            //release fireball
+            timer=50;
+        }
+        
+        
+        List<Fireball> fb = getObjects(Fireball.class);
+        for (Fireball f : fb){
+            f.setLocation(f.getX()-10, f.getY());
+            if(f.getX() <=10){
+                removeObject(f);
+            }
+        }        
+    }
+    
     public void drawPath(){
         int y=320;
         int x=10;
@@ -34,19 +52,51 @@ public class Lvl1Screen4 extends Levels
             addObject(new InnerBlock(), x, y+20);
             addObject(new InnerBlock(), x, y+50);
             addObject(new InnerBlock(), x, y+80);
+            
+            addObject(new Platform(true,b1), x, y-150);
             x+=30;            
         }
-        x+=85;
-        for(int i = 0; i < 6; i++){
+        x+=75;
+        addObject(new Platform(true,b11), x, y);
+        
+        addObject(new Platform(true,b11), x,(y-120));
+
+        x+=30;            
+        
+        x+=60;
+        y-=50;
+        addObject(new Platform(true,b11), x, y);
+
+        x+=30;            
+
+        x+=60;
+        y-=50;
+        addObject(new Platform(true, b11), x, y);
+
+        
+        
+        
+        x+=90;
+        y-=50;
+        for(int i=0; i < 4; i++){
             addObject(new Ground(), x, y);
             addObject(new InnerBlock(), x, y+20);
             addObject(new InnerBlock(), x, y+50);
             addObject(new InnerBlock(), x, y+80);
-            x+=30;            
+            x+=30; 
         }
         
+        x=265;
+        y=115;
+        addObject(new Platform(true,b11), x, y);
+        x=380;
+        addObject(new Platform(true,b11), x, y);
+        
+        addObject(new Slime(2), 445, 175);
+
+
         InvisiblePortal portal = new InvisiblePortal();
-        addObject(new InvisiblePortal(), 600, 70);
+        addObject(new InvisiblePortal(), 600, 130);
     }
     
     public void addBats(){
