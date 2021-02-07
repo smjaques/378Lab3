@@ -50,7 +50,7 @@ public class Lvl1Screen5 extends Levels
         addP(new Platform(false,b10), 5, 1);
         addP(new Platform(false,b9), 6, 1);
         
-        for (i=0; i<3; i++) {
+        for (i=0; i<2; i++) {
             addP(new Platform(false,b10), 9+i*4, 0);
             addP(new Platform(false,b9), 10+i*4, 0);
         }
