@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Lvl1Screen5 extends Levels
+public class Lvl2Screen1 extends Levels
 {
     private static final int BLOCK_SIZE = 32;
     private static final int TILE_H = 12;
@@ -15,11 +15,11 @@ public class Lvl1Screen5 extends Levels
      * Constructor for objects of class Lvl1Screen5.
      * 
      */
-    public Lvl1Screen5(int health)
+    public Lvl2Screen1(int health)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super();
-        printLevel("Lvl 1");
+
         addHealth();
         updateHealthLevel(health);
         drawPath();
@@ -28,6 +28,7 @@ public class Lvl1Screen5 extends Levels
         addObject(new InvisiblePortal(), 600, 64+16);
         addObject(new FireballSpawner(true,100), 580, 230);
         addObject(new FireballSpawner(true,100,50), 580, 160);
+        printLevel("Lvl 2");
     }
     
     private void addP(Platform p, int x, int y) {
@@ -39,11 +40,11 @@ public class Lvl1Screen5 extends Levels
         int y, x, i;
         // TOP PILLARS
         for (i=0;i<4;i++) {
-            addP(new Platform(false,b6), 0, i);
-            addP(new Platform(false,b5), 1, i);
+            addP(new Platform(false,b6), 1, i);
+            addP(new Platform(false,b5), 2, i);
         }
-        addP(new Platform(false,b10), 0, 4);
-        addP(new Platform(false,b9), 1, 4);
+        addP(new Platform(false,b10), 1, 4);
+        addP(new Platform(false,b9), 2, 4);
         
         addP(new Platform(false,b6), 5, 0);
         addP(new Platform(false,b5), 6, 0);

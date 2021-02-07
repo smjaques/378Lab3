@@ -246,7 +246,7 @@ public class Knight extends Actor
         
         List<Ground> ground = this.getObjectsInRange(45, Ground.class);
         if((ground.size() > 0) && (Math.abs(ground.get(0).getTop() - this.getY())<=25)) {
-            if(Math.abs(this.getX() - ground.get(0).getX()) <=25){            
+            if(Math.abs(this.getX() - ground.get(0).getX()) <=30){            
                 touchingGround = true;
                 verticalSpeed=0;
                 isJumping = false;
@@ -258,7 +258,7 @@ public class Knight extends Actor
         for (Platform plat : intersectingPlatforms) {
             if (verticalSpeed <= 0) {
                 if ((Math.abs(this.getY() - plat.getTop()) <= 25) && plat.canLand()) {
-                    if(Math.abs(this.getX() - plat.getX()) <=25){
+                    if(Math.abs(this.getX() - plat.getX()) <=30){
                         touchingGround = true;
                         y = plat.getTop()-25;
                         verticalSpeed = 0;
@@ -279,7 +279,6 @@ public class Knight extends Actor
         if(!touchingGround) setMidJump();
         if (verticalSpeed > GRAVITY && !touchingGround) {
             //still going up
-            System.out.println("gravity?");
             verticalSpeed = verticalSpeed - GRAVITY_DELTA;
         }        
 
@@ -316,8 +315,8 @@ public class Knight extends Actor
             if (getWorld() instanceof Lvl1Screen1) Greenfoot.setWorld(new Lvl1Screen2(healthLevel));
             else if (getWorld() instanceof Lvl1Screen2) Greenfoot.setWorld(new Lvl1Screen3(healthLevel));
             else if (getWorld() instanceof Lvl1Screen3) Greenfoot.setWorld(new Lvl1Screen4(healthLevel));
-            else if (getWorld() instanceof Lvl1Screen4) Greenfoot.setWorld(new Lvl1Screen5(healthLevel));
-            else if (getWorld() instanceof Lvl1Screen5) Greenfoot.setWorld(new Lvl1Screen6(healthLevel));
+            else if (getWorld() instanceof Lvl1Screen4) Greenfoot.setWorld(new Lvl2Screen1(healthLevel));
+            else if (getWorld() instanceof Lvl2Screen1) Greenfoot.setWorld(new Lvl2Screen2(healthLevel));
  
         }
     }

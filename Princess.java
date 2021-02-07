@@ -319,8 +319,8 @@ public class Princess extends Actor
             if (getWorld() instanceof Lvl1Screen1) Greenfoot.setWorld(new Lvl1Screen2(healthLevel));
             else if (getWorld() instanceof Lvl1Screen2) Greenfoot.setWorld(new Lvl1Screen3(healthLevel));
             else if (getWorld() instanceof Lvl1Screen3) Greenfoot.setWorld(new Lvl1Screen4(healthLevel));
-            else if (getWorld() instanceof Lvl1Screen4) Greenfoot.setWorld(new Lvl1Screen5(healthLevel));
-            else if (getWorld() instanceof Lvl1Screen5) Greenfoot.setWorld(new Lvl1Screen6(healthLevel));
+            else if (getWorld() instanceof Lvl1Screen4) Greenfoot.setWorld(new Lvl2Screen1(healthLevel));
+            else if (getWorld() instanceof Lvl2Screen1) Greenfoot.setWorld(new Lvl2Screen2(healthLevel));
  
         }
     }
