@@ -1,12 +1,12 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 
 /**
- * Write a description of class PrincessHallway here.
+ * Write a description of class KnightHallway here.
  * 
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class PrincessHallway extends Levels
+public class KnightHallway extends Levels
 {
     private static final int BLOCK_SIZE = 32;
     private static final int TILE_H = 12;
@@ -16,21 +16,18 @@ public class PrincessHallway extends Levels
     private static final GreenfootImage RR  = new GreenfootImage("RugRight.png");
 
     /**
-     * Constructor for objects of class PrincessHallway.
+     * Constructor for objects of class KnightHallway.
      * 
      */
-    public PrincessHallway()
+    public KnightHallway()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super();
         printLevel("Lvl 1");
         drawPath();
-        addHealth();
-        updateHealthLevel(6);
         addObject(new DoorProp(), 600-120, 266);
         addObject(new Spell(), 600-380, 230);
-        addObject(new Princess(),600-120,275);
-        addObject(new InvisiblePortal(), 0, 400-120);
+        addObject(new Knight(),30,275);
     }
     
     private void addP(Platform p, int x, int y) {
