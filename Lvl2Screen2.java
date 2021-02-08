@@ -21,7 +21,7 @@ public class Lvl2Screen2 extends Levels
         addHealth();
         updateHealthLevel(health);
         drawPath();
-        //addSlime();
+        addSlime();
         Knight knight = new Knight();
         knight.setHealth(health);
         addObject(knight,20,78);
@@ -192,15 +192,12 @@ public class Lvl2Screen2 extends Levels
         
     }
    
-    /*
+    
     public void addSlime(){
-        Slime s1 = new Slime();
-        addObject(s1, 250, 290);
-        
-        Slime s2 = new Slime();
-        addObject(s2, 480, 160);
+        Slime s2 = new Slime(1);
+        addObject(s2, 480, 155);
     }
-    */
+    
     
 
 }

@@ -21,29 +21,23 @@ public class Lvl2Screen3 extends Levels
         addHealth();
         updateHealthLevel(health);
         drawPath();
-        //addSlime();
+        addSlime();
         Knight knight = new Knight();
         knight.setHealth(health);
         addObject(knight,20,78);
     }
     
     public void drawPath(){
-        int y=120;
+        int y=320;
         int x=10;
-        for(int i = 0; i < 2; i++){
+        for(int i = 0; i < 4
+        ; i++){
             //starting platform
             addObject(new Ground(), x, y);
             addObject(new InnerBlock(), x, y+30);
             addObject(new InnerBlock(), x, y+50);
             addObject(new InnerBlock(), x, y+80);
             addObject(new InnerBlock(), x, y+110);
-            addObject(new InnerBlock(), x, y+140);
-            addObject(new InnerBlock(), x, y+170);
-            addObject(new InnerBlock(), x, y+200);
-            addObject(new InnerBlock(), x, y+230);
-            addObject(new InnerBlock(), x, y+260);
-            addObject(new InnerBlock(), x, y+290);
-            addObject(new InnerBlock(), x, y+310);
             x+=30;            
         }
         
@@ -62,110 +56,48 @@ public class Lvl2Screen3 extends Levels
         }
         
 
-        //second platform
-        //second platform left vertical stone
-        y=230;
-        x=160;
-        for(int i=0; i < 6; i++){
-            Platform p3 = new Platform(false);
-            p3.setImage(b6);
-            addObject(p3, x, y+=30);
-        }
         
         
-        //second platform left corner stone
-        Platform p3a = new Platform(true);
-        p3a.setImage(b7);
-        addObject(p3a, 160, 230);
-       
-        
-        //second platform body
-        y=230;
-        x=190;
-        //addObject(new Ground(), x, y);
-        addObject(new InnerBlock(), x, y+30);
-        addObject(new InnerBlock(), x, y+50);
-        addObject(new InnerBlock(), x, y+80);
-        addObject(new InnerBlock(), x, y+110);
-        addObject(new InnerBlock(), x, y+140);
-        addObject(new InnerBlock(), x, y+170);
-        addObject(new InnerBlock(), x, y+200);
-        addObject(new InnerBlock(), x, y+230);
-        addObject(new InnerBlock(), x, y+260);
-        addObject(new InnerBlock(), x, y+290);
-        addObject(new InnerBlock(), x, y+310);
-          
-        
-        //second platform right vertical stone
-        for(int i=0; i < 2; i++){
-            Platform p4 = new Platform(false);
-            p4.setImage(b5);
-            addObject(p4, x, y+=30);
-        }
-        
-        //second platform right corner stone
-        Platform p4a = new Platform(true);
-        p4a.setImage(b8);
-        addObject(p4a, 190, 230);
-        
-        //second platform body 2
-        y=320;
-        x=220;
-        for(int i = 0; i < 4; i++){
-            //addObject(new Ground(), x, y);
-            Platform p4b = new Platform(true);
-            p4b.setImage(b2);
-            addObject(p4b, x, y);
-            addObject(new InnerBlock(), x, y+30);
-            addObject(new InnerBlock(), x, y+50);
-            addObject(new InnerBlock(), x, y+80);
-            addObject(new InnerBlock(), x, y+110);
-            addObject(new InnerBlock(), x, y+140);
-            addObject(new InnerBlock(), x, y+170);
-            addObject(new InnerBlock(), x, y+200);
-            addObject(new InnerBlock(), x, y+230);
-            addObject(new InnerBlock(), x, y+260);
-            addObject(new InnerBlock(), x, y+290);
-            addObject(new InnerBlock(), x, y+310);
-            x+=30;            
-        }
-
-        //second platform right corner stone 2
-        Platform p4c = new Platform(true);
-        p4c.setImage(b8);
-        addObject(p4c, x, y);
-        
-        //second platform right vertical stone 2
-        for(int i=0; i < 3; i++){
-            Platform p4d = new Platform(false);
-            p4d.setImage(b5);
-            addObject(p4d, x, y+=30);
-        }
-        
-        //top middle platform
+        //square 1
         Platform p5 = new Platform(true);
         p5.setImage(b11);
-        addObject(p5, 280, 170);
+        addObject(p5, 210, 230);
 
         
-        //bottom middle platform
+        //square 2
         Platform p6 = new Platform(true);
         p6.setImage(b11);
-        addObject(p6, 420, 260);
+        addObject(p6, 240, 200);
         
+        //square 3
         Platform p6a = new Platform(true);
         p6a.setImage(b11);
-        addObject(p6a, 450, 230);
+        addObject(p6a, 360, 200);
         
+        //square 4
         Platform p6b = new Platform(true);
         p6b.setImage(b11);
-        addObject(p6b, 480, 200);
+        addObject(p6b, 390, 170);
         
+        //square 5
+        Platform p6c = new Platform(true);
+        p6c.setImage(b11);
+        addObject(p6c, 420, 200);
+        
+        //square 6
+        Platform p6d = new Platform(true);
+        p6d.setImage(b11);
+        addObject(p6d, 450, 230);
+        
+        //square 7
+        Platform p6e = new Platform(true);
+        p6e.setImage(b11);
+        addObject(p6e, 480, 260);
         
         //bottom ground
         //bottom ground left corner stone
         x=570;
-        y=320;
+        y=350;
         Platform p7 = new Platform(true);
         p7.setImage(b7);
         addObject(p7, x, y);
@@ -178,7 +110,7 @@ public class Lvl2Screen3 extends Levels
         }
         
         x=590;
-        y=320;
+        y=350;
         addObject(new Ground(), x, y);
         addObject(new InnerBlock(), x, y+30);
         addObject(new InnerBlock(), x, y+50);
@@ -188,19 +120,19 @@ public class Lvl2Screen3 extends Levels
         
         
         InvisiblePortal portal = new InvisiblePortal();
-        addObject(new InvisiblePortal(), 600, 280);
+        addObject(new InvisiblePortal(), 600, 310);
         
     }
    
-    /*
+    
     public void addSlime(){
-        Slime s1 = new Slime();
-        addObject(s1, 250, 290);
+        Slime s1 = new Slime(1);
+        addObject(s1, 240, 155);
         
-        Slime s2 = new Slime();
-        addObject(s2, 480, 160);
+        Slime s2 = new Slime(1);
+        addObject(s2, 390, 125);
     }
-    */
+    
     
 
 }
