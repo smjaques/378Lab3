@@ -13,7 +13,7 @@ public class Victory extends World
      * Constructor for objects of class Victory.
      * 
      */
-
+    public int timer = 950;
 
     public Victory()
     {    
@@ -37,6 +37,11 @@ public class Victory extends World
             addObject(new InnerBlock(), x, y+120);
             x+=30;      
         }
+    }
+    
+    public void act(){
+        if(timer==0) Greenfoot.setWorld(new Credits());
+        else timer--;
     }
     
 
