@@ -28,21 +28,7 @@ public class Lvl1Screen4 extends Levels
     }
     
     public void act(){
-        timer-=1;
-        if(timer==0){
-            addObject(new Fireball(1),585, 145);
-            //release fireball
-            timer=50;
-        }
-        
-        
-        List<Fireball> fb = getObjects(Fireball.class);
-        for (Fireball f : fb){
-            f.setLocation(f.getX()-10, f.getY());
-            if(f.getX() <=10){
-                removeObject(f);
-            }
-        }        
+       
     }
     
     public void drawPath(){

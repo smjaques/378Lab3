@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
 /**
  * Write a description of class Lvl1Screen6 here.
  * 
@@ -9,10 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Lvl3Screen1 extends Levels
 {
 
-    /**
-     * Constructor for objects of class Lvl1Screen6.
-     * 
-     */
+    public int timer = 30;
     public Lvl3Screen1(int health)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -38,7 +35,23 @@ public class Lvl3Screen1 extends Levels
         
     }
    
-
+    public void act(){
+        timer-=1;
+        if(timer==0){
+            addObject(new Fireball(1), 580, 320); //add fireball object
+            //release fireball
+            timer=50;
+        }
+        
+        
+        List<Fireball> fb = getObjects(Fireball.class);
+        for (Fireball f : fb){
+            f.setLocation(f.getX()-10, f.getY());
+            if(f.getX() <=10){
+                removeObject(f);
+            }
+        }      
+    }
     
 
 }

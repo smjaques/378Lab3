@@ -324,7 +324,9 @@ public class Knight extends Actor
             else if (getWorld() instanceof Lvl1Screen3) Greenfoot.setWorld(new Lvl1Screen4(healthLevel));
             else if (getWorld() instanceof Lvl1Screen4) Greenfoot.setWorld(new Lvl2Screen1(healthLevel));
             else if (getWorld() instanceof Lvl2Screen1) Greenfoot.setWorld(new Lvl2Screen2(healthLevel));
- 
+            else if (getWorld() instanceof Lvl2Screen2) Greenfoot.setWorld(new Lvl2Screen3(healthLevel));
+            else if (getWorld() instanceof Lvl2Screen3) Greenfoot.setWorld(new Lvl2Screen4(healthLevel));
+            else if (getWorld() instanceof Lvl2Screen4) Greenfoot.setWorld(new KnightHallway());
         }
     }
     

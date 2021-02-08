@@ -188,7 +188,7 @@ public class Lvl2Screen2 extends Levels
         
         
         InvisiblePortal portal = new InvisiblePortal();
-        addObject(new InvisiblePortal(), 600, 280);
+        addObject(new InvisiblePortal(), 585, 280);
         
     }
    

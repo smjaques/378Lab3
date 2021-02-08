@@ -1,5 +1,4 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
 /**
  * Write a description of class InvisiblePortal here.
  * 
@@ -9,10 +8,13 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class InvisiblePortal extends Actor
 {
     public InvisiblePortal(){
+        /*
         GreenfootImage pImage = new GreenfootImage(10,50);
         pImage.setColor(Color.RED);
         pImage.fill();
-        setImage(pImage); 
+        setImage(pImage);
+        */
+        
     }
     public void act() 
     {

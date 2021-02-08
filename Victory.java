@@ -21,6 +21,9 @@ public class Victory extends World
         super(600, 400, 1); 
         drawPath();
         addObject(new VictoryPrincess(), 285, 245);
+        GreenfootImage c = new GreenfootImage("congrats.png");
+        c.scale(500,150);
+        getBackground().drawImage(c, 45, 40);
     }
     
     public void drawPath(){
