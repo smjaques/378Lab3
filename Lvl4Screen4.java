@@ -29,8 +29,8 @@ public class Lvl4Screen4 extends Levels
         addHealth();
         updateHealthLevel(health);       
         drawPath();
-        Knight knight = new Knight();
-        addObject(knight,20,295);
+        Princess princess = new Princess();
+        addObject(princess,585,120);
     }
     
     public void act(){
@@ -82,7 +82,7 @@ public class Lvl4Screen4 extends Levels
         }
         
         InvisiblePortal portal = new InvisiblePortal();
-        addObject(portal,593,130);
+        addObject(portal,10, 295);
         
         addObject(new Slime(1), 435, 200);
     }

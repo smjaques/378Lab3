@@ -58,10 +58,7 @@ public class Princess extends Actor
     GreenfootImage[] fightR = new GreenfootImage[fightL.length];
     private int fightClock = 8;
     private boolean isFighting = false;
-    
-    //victory
-    GreenfootImage[] victoryL = {new GreenfootImage("princessVictoryL1.png"), new GreenfootImage("princessVictoryL2.png")};
-    GreenfootImage[] victoryR = new GreenfootImage[fightL.length];
+
         
     
     public Princess(){
@@ -104,13 +101,7 @@ public class Princess extends Actor
             img.mirrorHorizontally();
             fightR[i] = img;
         }
-        
-        //victory
-        for(int i=0; i < victoryL.length; i++){
-            GreenfootImage img = new GreenfootImage(victoryL[i]);
-            img.mirrorHorizontally();
-            victoryR[i] = img;
-        }        
+               
     }
     
 
@@ -249,8 +240,8 @@ public class Princess extends Actor
         (List<Platform>)getObjectsInRange(45, Platform.class);
         
         List<Ground> ground = this.getObjectsInRange(45, Ground.class);
-        if((ground.size() > 0) && (Math.abs(ground.get(0).getTop() - this.getY())<=26)) {
-            if(Math.abs(this.getX() - ground.get(0).getX()) <=20){            
+        if((ground.size() > 0) && (Math.abs(ground.get(0).getTop() - this.getY())<=25)) {
+            if(Math.abs(this.getX() - ground.get(0).getX()) <=30){            
                 touchingGround = true;
                 verticalSpeed=0;
                 isJumping = false;
@@ -262,7 +253,7 @@ public class Princess extends Actor
         for (Platform plat : intersectingPlatforms) {
             if (verticalSpeed <= 0) {
                 if ((Math.abs(this.getY() - plat.getTop()) <= 25) && plat.canLand()) {
-                    if(Math.abs(this.getX() - plat.getX()) <=25){
+                    if(Math.abs(this.getX() - plat.getX()) <=30){
                         touchingGround = true;
                         y = plat.getTop()-25;
                         verticalSpeed = 0;
@@ -308,8 +299,10 @@ public class Princess extends Actor
     }
     
     public void resetLevel(){
-        if(this.getWorld().toString().contains("Lvl1")){
-            Greenfoot.setWorld(new Lvl1Screen1());
+        if(this.getWorld().toString().contains("Lvl3")){
+            Greenfoot.setWorld(new Lvl3Screen1(6));
+        } else if(this.getWorld().toString().contains("Lvl4")){
+            Greenfoot.setWorld(new Lvl4Screen1(6));          
         }       
     }
     
@@ -323,6 +316,9 @@ public class Princess extends Actor
             else if (getWorld() instanceof Lvl4Screen1) Greenfoot.setWorld(new Lvl4Screen2(healthLevel));
             else if (getWorld() instanceof Lvl4Screen2) Greenfoot.setWorld(new Lvl4Screen3(healthLevel));
             else if (getWorld() instanceof Lvl4Screen3) Greenfoot.setWorld(new Lvl4Screen4(healthLevel));
+            else if (getWorld() instanceof PrincessRoom) Greenfoot.setWorld(new PrincessHallway());
+            else if (getWorld() instanceof PrincessHallway) Greenfoot.setWorld(new Lvl3Screen1(6));
+            else if (getWorld() instanceof Lvl4Screen4) Greenfoot.setWorld(new Victory());
             //another final screen for victory?
  
         }
@@ -376,7 +372,6 @@ public class Princess extends Actor
         for(Enemy e : touching){
             invincible=true;
             if(e.getLives()==0){
-                System.out.println("in knight");
                 getWorld().removeObject(e);
             }
             
@@ -444,7 +439,7 @@ public class Princess extends Actor
         if(lastDir>0) setImage(traitR[traitNum]);
         else setImage(traitL[traitNum]);
         
-        if(traitNum==5) traitNum=0;
+        if(traitNum==1) traitNum=0;
         else traitNum++;
         idleNum=0;
         runNum=0;

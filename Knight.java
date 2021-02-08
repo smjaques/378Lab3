@@ -300,13 +300,20 @@ public class Knight extends Actor
         if(healthLevel == 0){
             //game over
             resetLevel();            
-        }      
+        }
+        
+        if(isTouching(Spell.class)){
+            Greenfoot.setWorld(new Dungeon());
+        }
+        //add if touches spell class --> die
     }
     
     public void resetLevel(){
         if(this.getWorld().toString().contains("Lvl1")){
             Greenfoot.setWorld(new Lvl1Screen1());
-        }       
+        } else if(this.getWorld().toString().contains("Lvl2")){
+            Greenfoot.setWorld(new Lvl2Screen1(6));
+        }
     }
     
     public void checkNextScreen(){

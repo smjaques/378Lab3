@@ -22,6 +22,7 @@ public class Spell extends Actor
     public Spell() {
         animTimer = DEF_ANIMTIMER;
         activated = false;
+        setImage(s1);
     }
     
     public void act() 

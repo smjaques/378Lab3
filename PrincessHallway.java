@@ -31,6 +31,7 @@ public class PrincessHallway extends Levels
         addObject(new Spell(), 600-380, 230);
         addObject(new Princess(),600-120,275);
         addObject(new InvisiblePortal(), 0, 400-120);
+        setBackground(new GreenfootImage("Background6.jpeg"));
     }
     
     private void addP(Platform p, int x, int y) {
