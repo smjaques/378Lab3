@@ -28,9 +28,11 @@ public class PrincessHallway extends Levels
         addHealth();
         updateHealthLevel(6);
         addObject(new DoorProp(), 600-120, 266);
-        addObject(new Spell(), 600-380, 230);
+        //addObject(new Spell(), 600-380, 230);
         addObject(new Princess(),600-120,275);
         addObject(new InvisiblePortal(), 0, 400-120);
+        addObject(new GenericText("Huh, the spell's gone? Well there's nothing in my way now.",
+            new Font("Candara",24), Color.WHITE),5,350);
         setBackground(new GreenfootImage("Background6.jpeg"));
     }
     
