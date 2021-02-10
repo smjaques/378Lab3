@@ -10,3 +10,7 @@ VERSION or DATE:
 HOW TO START THIS PROJECT:
 AUTHORS:
 USER INSTRUCTIONS:
+
+Attributions:
+alixgaus (https://freesound.org/people/alixgaus/) - page flip sfx
+
