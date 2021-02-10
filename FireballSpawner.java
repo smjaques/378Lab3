@@ -21,6 +21,7 @@ public class FireballSpawner extends Actor
         MAXTIMER = 50;
         timer = 50;
         children = new ArrayList<Fireball>();
+        getImage().clear();
     }
     
     public FireballSpawner(boolean isLeft, int timer) {
@@ -28,11 +29,13 @@ public class FireballSpawner extends Actor
         MAXTIMER = timer;
         this.timer = timer;
         children = new ArrayList<Fireball>();
+        getImage().clear();
     }
     
     public FireballSpawner(boolean isLeft, int timer, int timeOffset) {
         this(isLeft, timer);
         this.timer += timeOffset;
+        getImage().clear();
     }
     
     public void act() 
