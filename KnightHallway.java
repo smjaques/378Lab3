@@ -48,16 +48,6 @@ public class KnightHallway extends Levels
             addP(new Platform(true,(i%2==0)?b1:b2),i,TILE_H-2);
         }
     }
-   
-    /*
-    public void addSlime(){
-        Slime s1 = new Slime();
-        addObject(s1, 250, 290);
-        
-        Slime s2 = new Slime();
-        addObject(s2, 480, 160);
-    }
-    */
     
 
 }

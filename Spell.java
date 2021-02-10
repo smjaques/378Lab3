@@ -12,7 +12,9 @@ public class Spell extends Actor
     public final GreenfootImage s2 = new GreenfootImage("Spell2.png");
     public final GreenfootImage s3 = new GreenfootImage("Spell3.png");
     public final GreenfootImage s4 = new GreenfootImage("Spell4.png");
-    public final int DEF_ANIMTIMER = 50;
+    public final GreenfootSound snd1 = new GreenfootSound("Spell_Trigger.wav");
+    public final GreenfootSound snd2 = new GreenfootSound("Teleport.wav");
+    public final int DEF_ANIMTIMER = 100;
     
     private int animTimer;
     private boolean activated;
@@ -33,17 +35,27 @@ public class Spell extends Actor
                 setImage(s3);
             } else if (animTimer == 0) {
                 setImage(s4);
+                snd2.play();
             }
         }
     }    
     
-    public void trigger(boolean enable) {
+    public void activate(boolean enable) {
         activated = enable;
         if (enable) {
             setImage(s2);
+            snd1.play();
         } else {
             animTimer = DEF_ANIMTIMER;
             setImage(s1);
         }
+    }
+    
+    public int getAnimTimer() {
+        return animTimer;
+    }
+    
+    public boolean isActivated() {
+        return activated;
     }
 }

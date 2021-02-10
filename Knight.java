@@ -302,8 +302,25 @@ public class Knight extends Actor
             resetLevel();            
         }
         
-        if(isTouching(Spell.class)){
-            Greenfoot.setWorld(new Dungeon());
+        if(isTouching(Spell.class)) {
+            Spell spell = (Spell) getOneIntersectingObject(Spell.class);
+            if (Math.abs(spell.getX()-getX()) < 10) {
+                setLocation(spell.getX(),spell.getY());
+                if (!spell.isActivated()) {
+                    spell.activate(true);
+                }
+                if (spell.getAnimTimer() == 0) {
+                    getImage().clear();
+                    if (!spell.snd2.isPlaying()) {
+                        Greenfoot.setWorld(new Dungeon());
+                    }
+                } else if (spell.getAnimTimer() < spell.DEF_ANIMTIMER/4) {
+                    //getImage().setColor(Color.WHITE);
+                    //getImage().fill();
+                    getImage().setTransparency(100);
+                }
+                
+            }
         }
         //add if touches spell class --> die
     }
