@@ -26,9 +26,11 @@ public class PrincessRoom extends Levels
         printLevel("Lvl 1");
         drawPath();
         //addSlime();
-        addObject(new Princess(),120,(TILE_H-4)*BLOCK_SIZE);
+        addObject(new Princess(),120,(TILE_H-4)*BLOCK_SIZE+23);
         addObject(new InvisiblePortal(), 600-60, 400-120);
         setBackground(new GreenfootImage("BackgroundPrincess.png"));
+        addObject(new GenericText("Nobody's coming... time to take care of this myself.",
+            new Font("Candara",24), Color.WHITE),46,350);
     }
     
     private void addP(Platform p, int x, int y) {
