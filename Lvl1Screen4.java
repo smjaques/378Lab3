@@ -75,11 +75,11 @@ public class Lvl1Screen4 extends Levels
         
         x=265;
         y=115;
-        addObject(new Platform(true,b11), x, y);
-        x=380;
-        addObject(new Platform(true,b11), x, y);
+        //addObject(new Platform(true,b11), x, y);
+        //x=380;
+        //addObject(new Platform(true,b11), x, y);
         
-        addObject(new Slime(2), 445, 175);
+        //addObject(new Slime(2), 445, 175);
 
 
         InvisiblePortal portal = new InvisiblePortal();

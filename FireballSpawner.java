@@ -11,7 +11,7 @@ public class FireballSpawner extends Actor
 {
     final int MAXTIMER;
     final boolean ISLEFT;
-    final int SPEED = 10;
+    final int SPEED = 5; //was 10
     int timer;
     List<Fireball> children;
     

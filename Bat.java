@@ -26,6 +26,8 @@ public class Bat extends Enemy
     
     private int lives;
     
+    public int bspeed;
+    
     
     public Bat(int lives){
         lives=lives;
@@ -59,7 +61,17 @@ public class Bat extends Enemy
         else spriteImage++;
         
         int x = (getX()+8) * direction;
-        setLocation(x, getY());
+        //setLocation(x, getY());
+        
+        
+        //slows down the speed of the bat
+        if (bspeed < 0){
+            bspeed = 1;
+            setLocation(x, getY());
+        }
+        else{
+            bspeed--;
+        }
         
         
         //if not at edge of screen, fly in same direction

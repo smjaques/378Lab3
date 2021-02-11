@@ -20,6 +20,7 @@ public class Slime extends Enemy
     GreenfootImage[] dyingR = new GreenfootImage[dyingL.length];
     public int dyingNum = 0;
     public int changeTime = 5;
+    public int mspeed = 3;
     
     public Slime(int lives){
         lives=lives+1;
@@ -51,7 +52,16 @@ public class Slime extends Enemy
             direction*=-1;
         }
         
-        move(direction);
+        
+        //move(direction);
+        //slows down the speed of the slime
+        if (mspeed < 0){
+            mspeed = 3;
+            move(direction);
+        }
+        else{
+            mspeed--;
+        }
     }
     public void attacked(){
         lives--;
