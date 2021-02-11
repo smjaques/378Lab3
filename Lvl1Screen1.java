@@ -17,7 +17,7 @@ public class Lvl1Screen1 extends Levels
     Health half6 = new Health();
     Health[] healthList = {half1, half2, half3, half4, half5, half6};
     
-    public int timer = 50;
+    public int timer = 200;
     public int FBX = 650;
     public int FBY = 310;
 
@@ -33,11 +33,12 @@ public class Lvl1Screen1 extends Levels
     }
     
     public void act(){
+        
         timer-=1;
         if(timer==0){
             releaseFireball(); //add fireball object
             //release fireball
-            timer=50;
+            timer=200;
         }
         
         

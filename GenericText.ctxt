@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.target=GenericText
+comment0.text=\n\ Write\ a\ description\ of\ class\ GenericText\ here.\n\ \n\ @author\ (your\ name)\ \n\ @version\ (a\ version\ number\ or\ a\ date)\n
+comment1.params=text\ w\ h\ font\ color
+comment1.target=GenericText(java.lang.String,\ int,\ int,\ greenfoot.Font,\ greenfoot.Color)
+comment2.params=text\ w\ h
+comment2.target=GenericText(java.lang.String,\ int,\ int)
+comment3.params=text\ font\ color
+comment3.target=GenericText(java.lang.String,\ greenfoot.Font,\ greenfoot.Color)
+comment4.params=text
+comment4.target=GenericText(java.lang.String)
+comment5.params=w
+comment5.target=void\ addedToWorld(greenfoot.World)
+numComments=6

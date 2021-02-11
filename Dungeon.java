@@ -24,6 +24,7 @@ public class Dungeon extends Levels
         getBackground().drawImage(script, 95, 135);
     }
     public void act(){
+        knightBackgroundMusic.stop();
         Greenfoot.delay(480);
         Greenfoot.setWorld(new PrincessRoom());   
     }    

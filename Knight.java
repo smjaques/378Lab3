@@ -60,7 +60,8 @@ public class Knight extends Actor
     GreenfootImage[] fightR = new GreenfootImage[fightL.length];
     private int fightClock = 8;
     private boolean isFighting = false;
-    
+    GreenfootSound hit = new GreenfootSound("KnightAttack.wav");
+
     public Knight(){
         getMirrors();
     }
@@ -156,7 +157,8 @@ public class Knight extends Actor
             jump();
                        
         }
-        if(Greenfoot.isKeyDown("space")){          
+        if(Greenfoot.isKeyDown("space")){ 
+            hit.play();
             attack();
         }
         if (!isKeyDown){
@@ -293,13 +295,13 @@ public class Knight extends Actor
         if(this.getY() >= 388){
             //play a dying sound for knight
             Greenfoot.playSound("Knight_Hurt.wav");
-            resetLevel();            
+            resetLevel(); 
         }
         
         // if ran out of lives
         if(healthLevel == 0){
             //game over
-            resetLevel();            
+            resetLevel();
         }
         
         if(isTouching(Spell.class)) {
@@ -394,6 +396,7 @@ public class Knight extends Actor
         List<Enemy> touching = this.getObjectsInRange(30, Enemy.class);
         for(Enemy e : touching){
             invincible=true;
+
             if(e.getLives()==0){
                 getWorld().removeObject(e);
             }

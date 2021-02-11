@@ -27,7 +27,9 @@ public class Levels extends World
     Health half5 = new Health();
     Health half6 = new Health();
     Health[] healthList = {half1, half2, half3, half4, half5, half6};
-    
+    GreenfootSound knightBackgroundMusic = new GreenfootSound("KnightBRM.wav");
+    GreenfootSound princessBackgroundMusic = new GreenfootSound("PrincessBRM.wav");
+
 
     /**
      * Constructor for objects of class Levels.
@@ -37,6 +39,7 @@ public class Levels extends World
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 400, 1); 
+
     }
     
     public void printLevel(String lvl){
@@ -77,5 +80,6 @@ public class Levels extends World
             
         }
     }
+
     
 }

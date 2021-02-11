@@ -6,16 +6,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class OpeningBook extends World
+public class OpeningBook extends Levels
 {
     public boolean open = false;
     private GreenfootSound snd1 = new GreenfootSound("Page_Flip.wav");
-    
+
     public OpeningBook()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(600, 400, 1);
+        super();
         setBackground(new GreenfootImage("openingBook.png"));
+        knightBackgroundMusic.playLoop();
     }
 
     

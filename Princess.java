@@ -58,7 +58,7 @@ public class Princess extends Actor
     GreenfootImage[] fightR = new GreenfootImage[fightL.length];
     private int fightClock = 8;
     private boolean isFighting = false;
-
+    GreenfootSound hit = new GreenfootSound("PrincessAttack.wav");
         
     
     public Princess(){
@@ -152,7 +152,8 @@ public class Princess extends Actor
             jump();
                        
         }
-        if(Greenfoot.isKeyDown("space")){          
+        if(Greenfoot.isKeyDown("space")){ 
+            hit.play();
             attack();
         }
         if (!isKeyDown){
