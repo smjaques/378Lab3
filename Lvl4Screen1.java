@@ -30,9 +30,9 @@ public class Lvl4Screen1 extends Levels
     public void act(){
         timer-=1;
         if(timer==0){
-            addObject(new Fireball(1),585, 145);
+            addObject(new Fireball(1),585, 145+32);
             //release fireball
-            timer=50;
+            timer=130;
         }
         
         
