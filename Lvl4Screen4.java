@@ -25,7 +25,7 @@ public class Lvl4Screen4 extends Levels
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(); 
-        printLevel("Lvl 1");
+        printLevel("Lvl 4");
         addHealth();
         updateHealthLevel(health);       
         drawPath();
@@ -34,6 +34,7 @@ public class Lvl4Screen4 extends Levels
     }
     
     public void act(){
+        /*
         timer-=1;
         if(timer==0){
             releaseFireball(); //add fireball object
@@ -48,7 +49,8 @@ public class Lvl4Screen4 extends Levels
             if(f.getX() <=10){
                 removeObject(f);
             }
-        }      
+        }
+        */
     }
     
     public void drawPath(){

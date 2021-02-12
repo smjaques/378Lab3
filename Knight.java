@@ -61,9 +61,11 @@ public class Knight extends Actor
     private int fightClock = 8;
     private boolean isFighting = false;
     GreenfootSound hit = new GreenfootSound("KnightAttack.wav");
-
+    GreenfootSound hurtSound = new GreenfootSound("Knight_Hurt.wav");
     public Knight(){
         getMirrors();
+        hit.setVolume(65);
+        hurtSound.setVolume(75);
     }
     
     public void getMirrors(){
@@ -199,7 +201,7 @@ public class Knight extends Actor
     public void decrementHealth(){
         if(!invincible){
             setHurt();
-            Greenfoot.playSound("Knight_Hurt.wav");
+            hurtSound.play();
             healthLevel-=1;
             invincible = true;
         }
@@ -294,7 +296,7 @@ public class Knight extends Actor
         // if touching lower edge
         if(this.getY() >= 388){
             //play a dying sound for knight
-            Greenfoot.playSound("Knight_Hurt.wav");
+            hurtSound.play();
             resetLevel(); 
         }
         

@@ -13,6 +13,7 @@ public class Princess extends Actor
     private int healthLevel = 6;
     private boolean invincible = false;
     private int invincibilityTimer = 20;
+    GreenfootSound hurtSound = new GreenfootSound("Princess_Hurt.wav");
     
     // time allowed in air for single jump
     private boolean isJumping = false;
@@ -63,6 +64,8 @@ public class Princess extends Actor
     
     public Princess(){
         getMirrors();
+        hit.setVolume(65);
+        hurtSound.setVolume(75);
     }
     
     public void getMirrors(){
@@ -193,7 +196,7 @@ public class Princess extends Actor
     
     public void decrementHealth(){
         if(!invincible){
-            Greenfoot.playSound("Princess_Hurt.wav");
+            hurtSound.play();
             healthLevel-=1;
             invincible = true;
         }
@@ -287,8 +290,8 @@ public class Princess extends Actor
     public void checkIfDied(){
         // if touching lower edge
         if(this.getY() >= 388){
-            //play a dying sound for knight
-            Greenfoot.playSound("Knight_Hurt.wav");
+            //play a dying sound for knight           
+            hurtSound.play();
             resetLevel();            
         }
         
