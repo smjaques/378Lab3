@@ -32,7 +32,7 @@ public class PrincessHallway extends Levels
         addObject(new Princess(),600-120,275);
         addObject(new InvisiblePortal(), 0, 400-120);
         addObject(new GenericText("Huh, the spell's gone? Well there's nothing in my way now.",
-            new Font("Candara",24), Color.WHITE),5,350);
+            new Font("Georgia",22), Color.WHITE),15,350);
         setBackground(new GreenfootImage("Background6.jpeg"));
     }
     
