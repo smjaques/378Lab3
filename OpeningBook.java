@@ -39,20 +39,22 @@ public class OpeningBook extends Levels
         // addObject(left, 160, 180);
         // RightBook right = new RightBook();
         // addObject(right,440,180);
+        Font defFont = new Font("Georgia",21);
+        Font defBold = new Font("Georgia",true,false,21);
         addObject(new GenericText("Once upon a time, in a \nKingdom long forgotten, \n"+
             "a princess lies trapped in \na fortress built by the very \nsubjects she would rule.",
-            new Font("Garamond",24), Color.BLACK),36,25);
+            defFont, Color.BLACK),36,25);
         addObject(new GenericText("As per the laws of their \nland, the next king shall be \ndecided by a test of might \nand honor. "+
             "Whoever frees\nthe princess will have her\nhand in marriage.",
-            new Font("Garamond",24), Color.BLACK),36,180);
+            defFont, Color.BLACK),36,180);
         addObject(new GenericText("For days there has been\nnothing but failure after\nfailure, but this time is\ndifferent.",
-            new Font("Garamond",24), Color.BLACK),323,25);
+            defFont, Color.BLACK),323,25);
         addObject(new GenericText("Now it is your turn, and\nnobody can best your\nswordsmanship and wit.",
-            new Font("Garamond",24), Color.BLACK),323,150);
+            defFont, Color.BLACK),323,150);
         addObject(new GenericText("Nobody.",
-            new Font("Garamond",true,false,24), Color.BLACK),323,160+24*3);
+            defBold, Color.BLACK),323,160+65);
         addObject(new GenericText("Press space to start your\nquest.",
-            new Font("Garamond",24), Color.BLACK),323,280);
+            defFont, Color.BLACK),323,280);
     }
     
     public void stopBRM(){
