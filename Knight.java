@@ -65,7 +65,7 @@ public class Knight extends Actor
     public Knight(){
         getMirrors();
         hit.setVolume(65);
-        hurtSound.setVolume(75);
+        hurtSound.setVolume(85);
     }
     
     public void getMirrors(){

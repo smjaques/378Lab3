@@ -65,7 +65,7 @@ public class Princess extends Actor
     public Princess(){
         getMirrors();
         hit.setVolume(65);
-        hurtSound.setVolume(75);
+        hurtSound.setVolume(80);
     }
     
     public void getMirrors(){

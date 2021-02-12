@@ -16,7 +16,7 @@ public class OpeningBook extends Levels
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super();
         setBackground(new GreenfootImage("openingBook.png"));
-        knightBackgroundMusic.playLoop();
+        knightBackgroundMusic.play();
     }
 
     
@@ -53,5 +53,9 @@ public class OpeningBook extends Levels
             new Font("Garamond",true,false,24), Color.BLACK),323,160+24*3);
         addObject(new GenericText("Press space to start your\nquest.",
             new Font("Garamond",24), Color.BLACK),323,280);
+    }
+    
+    public void stopBRM(){
+        knightBackgroundMusic.stop();
     }
 }

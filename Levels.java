@@ -27,8 +27,8 @@ public class Levels extends World
     Health half5 = new Health();
     Health half6 = new Health();
     Health[] healthList = {half1, half2, half3, half4, half5, half6};
-    GreenfootSound knightBackgroundMusic = new GreenfootSound("KnightBRM.wav");
-    GreenfootSound princessBackgroundMusic = new GreenfootSound("PrincessBRM.wav");
+    public static GreenfootSound knightBackgroundMusic = new GreenfootSound("KnightBRM.wav");
+    public GreenfootSound princessBackgroundMusic = new GreenfootSound("PrincessBRM.wav");
 
 
     /**
@@ -79,6 +79,10 @@ public class Levels extends World
             l--;
             
         }
+    }
+    
+    public GreenfootSound getBRM(){
+        return knightBackgroundMusic;
     }
 
     

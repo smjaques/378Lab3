@@ -23,7 +23,9 @@ public class PrincessRoom extends Levels
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super();
-        printLevel("Lvl 1");
+        printLevel("Lvl 4");
+        knightBackgroundMusic.stop();
+     
         princessBackgroundMusic.playLoop();
         drawPath();
         //addSlime();
