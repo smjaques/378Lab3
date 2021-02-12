@@ -9,7 +9,7 @@ import java.util.List;
 public class Lvl3Screen1 extends Levels
 {
 
-    public int timer = 30;
+    public int timer = 70;
     public Lvl3Screen1(int health)
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
@@ -20,7 +20,7 @@ public class Lvl3Screen1 extends Levels
         drawPath();
         Princess princess = new Princess();
         princess.setHealth(health);
-        addObject(princess,575,310);
+        addObject(princess,530,310);
     }
     
     public void drawPath(){
