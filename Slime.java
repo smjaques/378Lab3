@@ -22,6 +22,19 @@ public class Slime extends Enemy
     public int changeTime = 5;
     public int mspeed = 3;
     
+    //animation stuff
+    private GreenfootImage hop1L = new GreenfootImage("slimeHop1L.png");
+    private GreenfootImage hop2L = new GreenfootImage("slimeHop2L.png");
+    private GreenfootImage hop3L = new GreenfootImage("slimeHop3L.png");
+    private GreenfootImage hop4L = new GreenfootImage("slimeHop4L.png");
+    
+    private GreenfootImage hop1R = new GreenfootImage("slimeHopR1.png");
+    private GreenfootImage hop2R = new GreenfootImage("slimeHopR2.png");
+    private GreenfootImage hop3R = new GreenfootImage("slimeHopR3.png");
+    private GreenfootImage hop4R = new GreenfootImage("slimeHopR4.png");
+    
+    private int frame = 1;
+    
     public Slime(int lives){
         lives=lives+1;
         getMirror();
@@ -58,10 +71,21 @@ public class Slime extends Enemy
         if (mspeed < 0){
             mspeed = 3;
             move(direction);
+            //hop animation   
+            if(direction < 0)
+            {
+                animateLeft();
+            }
+            else
+            {
+                animateRight();
+            }
         }
         else{
             mspeed--;
         }
+        
+        
     }
     public void attacked(){
         lives--;
@@ -91,5 +115,49 @@ public class Slime extends Enemy
            setImage(dyingL[dyingNum]);
         }
         dyingNum++;
+    }
+    
+        public void animateLeft()
+    {
+        if(frame == 1)
+        {
+            setImage(hop1L);
+        }
+        if(frame == 2)
+        {
+            setImage(hop2L);
+        }
+        if(frame == 3)
+        {
+            setImage(hop3L);
+        }
+        if(frame == 4)
+        {
+            setImage(hop4L);
+            frame = 1;
+        }
+        frame++;
+    }
+    
+    public void animateRight()
+    {
+        if(frame == 1)
+        {
+            setImage(hop1R);
+        }
+        if(frame == 2)
+        {
+            setImage(hop2R);
+        }
+        if(frame == 3)
+        {
+            setImage(hop3R);
+        }
+        if(frame == 4)
+        {
+            setImage(hop4R);
+            frame = 1;
+        }
+        frame++;
     }
 }
