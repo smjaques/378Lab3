@@ -128,18 +128,6 @@ public class Knight extends Actor
     public void processKeys(){
         boolean isKeyDown = false;
         
-        if(Greenfoot.isKeyDown("left")){
-            isKeyDown = true;
-            lastDir=-1;
-            if(!hitWallLeft()) {
-                horizontalSpeed = -WALKING;
-                setLeftRun();
-            }
-            else{
-                horizontalSpeed = 0;
-                setIdle();
-            }
-        }
         if(Greenfoot.isKeyDown("right")){
             isKeyDown = true;
             lastDir=1;
@@ -152,6 +140,19 @@ public class Knight extends Actor
                 setIdle();
             }
 
+        } else if(Greenfoot.isKeyDown("left")){
+            isKeyDown = true;
+            lastDir=-1;
+            if(!hitWallLeft()) {
+                horizontalSpeed = -WALKING;
+                setLeftRun();
+            }
+            else{
+                horizontalSpeed = 0;
+                setIdle();
+            }
+        } else {
+            horizontalSpeed = 0;
         }
         if(Greenfoot.isKeyDown("up")){
             isKeyDown = true;

@@ -135,8 +135,7 @@ public class Princess extends Actor
                 horizontalSpeed = 0;
                 setIdle();
             }
-        }
-        if(Greenfoot.isKeyDown("right")){
+        } else if(Greenfoot.isKeyDown("right")){
             isKeyDown = true;
             lastDir=1;
             if(!hitWallRight()){
@@ -148,6 +147,8 @@ public class Princess extends Actor
                 setIdle();
             }
 
+        } else {
+            horizontalSpeed = 0;
         }
         if(Greenfoot.isKeyDown("up")){
             isKeyDown = true;
@@ -160,7 +161,6 @@ public class Princess extends Actor
             attack();
         }
         if (!isKeyDown){
-            horizontalSpeed = 0;
             
 
             if(!isJumping && !isFighting){
