@@ -206,7 +206,7 @@ public class Princess extends Actor
         if(invincible){
             if(invincibilityTimer==0){
                 invincible = false;
-                invincibilityTimer = 20;
+                invincibilityTimer = 30;
             }
             else invincibilityTimer--;
             
@@ -372,9 +372,9 @@ public class Princess extends Actor
     public void attack(){ 
         isFighting=true;
         setAttack();
-        List<Enemy> touching = this.getObjectsInRange(30, Enemy.class);
+        List<Enemy> touching = this.getObjectsInRange(50, Enemy.class);
         for(Enemy e : touching){
-            invincible=true;
+            //invincible=true;
             if(e.getLives()==0){
                 getWorld().removeObject(e);
             }
