@@ -12,7 +12,7 @@ public class Knight extends Actor
     private int GROUND = 295;
     private int healthLevel = 6;
     private boolean invincible = false;
-    private int invincibilityTimer = 20;
+    private int invincibilityTimer = 30;
     
     // time allowed in air for single jump
     private boolean isJumping = false;
@@ -20,8 +20,8 @@ public class Knight extends Actor
     private int horizontalSpeed = 0;
     // height for jump
     private int JUMPVELOCITY = 14;
-    private int GRAVITY = -7;
-    private double GRAVITY_DELTA = 1;
+    private int GRAVITY = -9;
+    private double GRAVITY_DELTA = 0.9;
     private int WALKING = 2;
        
     //ANIMATION
