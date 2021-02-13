@@ -20,5 +20,8 @@ public class Credits extends World
         GreenfootImage creds = new GreenfootImage("Credits.png");
         creds.scale(550,250);
         getBackground().drawImage(creds, 25, 85);
+        
+        GreenfootImage mcreds = new GreenfootImage("MusicCredit.png");
+        getBackground().drawImage(mcreds, 28, 370);
     }
 }
