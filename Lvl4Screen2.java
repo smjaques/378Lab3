@@ -131,19 +131,19 @@ public class Lvl4Screen2 extends Levels
 
         Platform p11 = new Platform(false);
         p11.setImage(b10);
-        addObject(p11, x, y);
+        addObject(p11, x, y-30);
         
         for(int i=0; i < 2; i++){
             Platform p12 = new Platform(false);
             p12.setImage(b4);
-            addObject(p12, x+=30, y);
+            addObject(p12, x+=30, y-30);
         }
         
         Platform p13 = new Platform(false);
         p13.setImage(b9);
-        addObject(p13, x+=30, y);
-        
-        for(int i = 0; i < 3; i++){
+        addObject(p13, x+=30, y-30);
+        y-=30;
+        for(int i = 1; i < 3; i++){
             Platform p14 = new Platform(false);
             p14.setImage(b5);
             addObject(p14, x, y-=30);
@@ -173,7 +173,7 @@ public class Lvl4Screen2 extends Levels
         addObject(p19, x+=30, y);
         
         x=310;
-        y=250;
+        y=250-32;
         Platform p20 = new Platform(false);
         p20.setImage(b11);
         addObject(p20, x, y);
